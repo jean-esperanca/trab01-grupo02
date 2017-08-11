@@ -13,6 +13,7 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String name;
 	
 	public Client(){}
 	
