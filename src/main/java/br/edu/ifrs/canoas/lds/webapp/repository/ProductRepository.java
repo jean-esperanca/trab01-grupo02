@@ -3,13 +3,13 @@ package br.edu.ifrs.canoas.lds.webapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.Estimate;
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 
 /*
- *  Create by Edward Ramos Aug/10/2017
+ *  Create by Edward Ramos Aug/11/2017
  *  
  */
 @Repository
-public interface EstimateRepository extends JpaRepository<Estimate, Long>{
+public interface ProductRepository extends JpaRepository<Product, Long>{
 
 }

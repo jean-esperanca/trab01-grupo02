@@ -5,15 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Created by Edward Ramos Aug/10/2017.
+ * "Categoria" in portuguese
+ * Created by Edward Ramos Aug/11/2017.
  */
 @Entity
-public class ProductRepair {
+public class Category {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	public ProductRepair(){}
-	
 }

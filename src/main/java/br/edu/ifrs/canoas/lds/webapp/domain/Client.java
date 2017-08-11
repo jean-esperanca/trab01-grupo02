@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
+ * "Cliente" in portuguese
  * Created by Edward Ramos Aug/10/2017.
  */
 @Entity

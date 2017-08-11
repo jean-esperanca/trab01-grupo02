@@ -5,16 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Created by Edward Ramos Aug/10/2017.
+ * "Produto" in portuguese
+ * Created by Edward Ramos Aug/11/2017.
  */
 @Entity
-public class OrderOfService {
+public class Product {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	public OrderOfService(){
-		
-	}
 }

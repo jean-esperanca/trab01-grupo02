@@ -4,23 +4,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
-import br.edu.ifrs.canoas.lds.webapp.service.PieceService;
+import br.edu.ifrs.canoas.lds.webapp.service.OrderService;
 
 /*
- *  Create by Edward Ramos Aug/10/2017
+ *  Create by Edward Ramos Aug/11/2017
  *  
  */
 @Controller
-@RequestMapping("/piece/")
-public class PieceController {
+@RequestMapping("/order/")
+public class OrderController {
 
 	private final Messages messages;
-	private final PieceService pieceService;
+	private final OrderService orderService;
 	
-	public PieceController(Messages messages, PieceService pieceService) {
+	public OrderController(Messages messages, OrderService orderService) {
 		this.messages = messages;
-		this.pieceService = pieceService;
+		this.orderService = orderService;
 	}
-	
 	
 }

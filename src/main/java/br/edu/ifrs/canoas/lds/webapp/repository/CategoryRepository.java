@@ -3,13 +3,13 @@ package br.edu.ifrs.canoas.lds.webapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.OrderOfService;
+import br.edu.ifrs.canoas.lds.webapp.domain.Category;
 
 /*
- *  Create by Edward Ramos Aug/10/2017
+ *  Create by Edward Ramos Aug/11/2017
  *  
  */
 @Repository
-public interface OrderOfServiceRepository extends JpaRepository<OrderOfService, Long>{
+public interface CategoryRepository extends JpaRepository<Category, Long>{
 
 }
