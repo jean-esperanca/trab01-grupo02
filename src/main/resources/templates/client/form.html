@@ -2,10 +2,11 @@
 <html layout:decorate="~{/layouts/main}">
 
 	<div layout:fragment="content">
-		<form id="form_1099345" class="appnitro" method="post" action="">
+		<form id="form_1099345" class="appnitro" method="post" th:action="@{/client/save}"
+			th:object="${client}">
+			
 			<div class="form_description">
-				<h2>Client Form</h2>
-				<p>This is your form description. Click here to edit.</p>
+				<h2 th:text="${readonly}?#{client.view}:#{client.edit}"></h2>
 			</div>
 			<ul>
 
