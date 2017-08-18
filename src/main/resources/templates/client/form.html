@@ -1,6 +1,112 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{/layouts/main}">
 
+	<div layout:fragment="content">
+		<form id="form_1099345" class="appnitro" method="post" th:action="@{/client/save}"
+			th:object="${client}">
+			
+			<div class="form_description">
+				<h2 th:text="${readonly}?#{client.view}:#{client.edit}"></h2>
+			</div>
+			<ul>
+
+				<!-- Id hidden -->
+				<input type="hidden" th:field="*{id}" />
+
+				<!-- Name -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.name}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				<!-- Lastname -->	
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.lastName}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Phone -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.phone}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Email -->
+				<li id="li_2"><label class="description" for="element_2" th:text="#{client.email}">
+				</label>
+					<div>
+						<input id="element_2" name="element_2" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+					
+				<!-- CPF -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.cpf}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Rua -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.street}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Number -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.streetNumber}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Complements -->
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.complements}">
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Neighborhood -->
+				<li id="li_1"><label class="description" for="element_1">Bairro
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- City -->
+				<li id="li_1"><label class="description" for="element_1">Cidade
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- State -->
+				<li id="li_1"><label class="description" for="element_1">Estado
+				</label>
+					<div>
+						<input id="element_1" name="element_1" class="element text medium"
+							type="text" maxlength="255" value="" />
+					</div></li>
+				
+				<!-- Submit -->
+				<li class="buttons"><input type="hidden" name="form_id"
+					value="1099345" /> <input id="saveForm" class="button_text"
+					type="submit" name="submit" value="Submit" /></li>
+			</ul>
+		</form>
+	</div>
 
 
 </html>
