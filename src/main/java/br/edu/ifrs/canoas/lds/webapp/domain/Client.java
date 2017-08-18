@@ -3,6 +3,9 @@ package br.edu.ifrs.canoas.lds.webapp.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
 
 /**
  * "Cliente" in portuguese
@@ -16,21 +19,34 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotNull
 	private String name;
+	@NotNull
 	private String lastName;
+	@NotNull @Email
 	private String email;
+	@NotNull
 	private String phone;
+	@NotNull
 	private String cpf;
+	@NotNull
 	private String street;
+	@NotNull
 	private Long streetNumber;
+	
+	private String complements;
+	@NotNull
 	private String neighborhood;
+	@NotNull
 	private String city;
+	@NotNull
 	private String state;
+	@NotNull
 	private String zipcode;
 	
 	public Client(){}
 	public Client(Long id, String name, String lastName, String email, String phone, String cpf, String street,
-			Long streetNumber, String neighborhood, String city, String state, String zipcode) {
+			Long streetNumber, String complements, String neighborhood, String city, String state, String zipcode) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,6 +56,7 @@ public class Client {
 		this.cpf = cpf;
 		this.street = street;
 		this.streetNumber = streetNumber;
+		this.complements = complements;
 		this.neighborhood = neighborhood;
 		this.city = city;
 		this.state = state;
@@ -96,6 +113,12 @@ public class Client {
 	public String getNeighborhood() {
 		return neighborhood;
 	}
+	public String getComplements() {
+		return complements;
+	}
+	public void setComplements(String complements) {
+		this.complements = complements;
+	}
 	public void setNeighborhood(String neighborhood) {
 		this.neighborhood = neighborhood;
 	}
@@ -117,6 +140,8 @@ public class Client {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+	
+	
 	
 	
 }

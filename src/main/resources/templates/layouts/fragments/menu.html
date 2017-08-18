@@ -31,79 +31,79 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Cliente</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{client.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/client/list" th:text="#{list}"></a></li>
+                    <li><a href="/client/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Pedido</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{order.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/order/list" th:text="#{list}"></a></li>
+                    <li><a href="/order/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Produto</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{product.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/product/list"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/product/list" th:text="#{list}"></a></li>
+                    <li><a href="/product/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Categoria</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{category.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/category/list" th:text="#{list}"></a></li>
+                    <li><a href="/category/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Fornecedor</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{provider.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/provider/list" th:text="#{list}"></a></li>
+                    <li><a href="/provider/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Usuário</span>
+                    <i class="fa fa-dashboard"></i> <span th:text="#{user.title}"></span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/user/list"><i class="fa fa-circle-o"></i> Listar</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Criar</a></li>
+                    <li><a href="/user/list" th:text="#{list}"></a></li>
+                    <li><a href="/user/create" th:text="#{create}"></a></li>
                 </ul>
             </li>
             
