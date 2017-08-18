@@ -49,7 +49,7 @@ public class ClientController {
 		ModelAndView mav = new ModelAndView("/client/form");
 		
 		mav.addObject("client", clientService.getId(id));
-		mav.addObject("readOnly", true); //true = No editable fields
+		mav.addObject("isView", true); //true = No editable fields
 		return mav;
 	}
 	
@@ -58,7 +58,7 @@ public class ClientController {
 		ModelAndView mav = new ModelAndView("/client/form");
 		
 		mav.addObject("client", new Client());
-		mav.addObject("readOnly", false); //false = editable fields
+		mav.addObject("isCreate", true); //false = editable fields
 		return mav;
 	}
 	
@@ -67,7 +67,7 @@ public class ClientController {
 		ModelAndView mav = new ModelAndView("/client/form");
 		
 		mav.addObject("client", clientService.getId(id));
-		mav.addObject("readOnly", false); //false = editable fields
+		mav.addObject("isEdit", true); //false = editable fields
 		return mav;
 	}
 	
