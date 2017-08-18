@@ -51,4 +51,16 @@ public class UserController {
         
         return mav;
     }
+    
+    @GetMapping("/list")
+    public ModelAndView list(){
+    	ModelAndView mav = new ModelAndView("/user/list");
+    	mav.addObject("users",userService.list());
+    
+		return mav;
+		
+    }
+    
+    
+    
 }

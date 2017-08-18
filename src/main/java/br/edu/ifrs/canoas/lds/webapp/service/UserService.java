@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.lds.webapp.service;
 
 import org.springframework.stereotype.Service;
 
+import br.edu.ifrs.canoas.lds.webapp.domain.Client;
 import br.edu.ifrs.canoas.lds.webapp.domain.User;
 import br.edu.ifrs.canoas.lds.webapp.repository.UserRepository;
 
@@ -26,5 +27,10 @@ public class UserService {
 	public User getOne(User user) {
 		return userRepository.findById(user.getId()).get();
 	}
+	
+	public Iterable<User> list(){
+		return userRepository.findAll();
+	}
+	
 
 }
