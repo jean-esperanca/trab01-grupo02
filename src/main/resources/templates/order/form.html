@@ -1,95 +1,89 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/main}">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/main}">
 <div layout:fragment="content">
     <form id="form_1099345" class="appnitro" method="post" th:action="@{/order/save}"
           th:object="${order}">
+        <div class="container-fluid">
+            <div class="row form-control">
+                <div class="col-md-2">
+                    <label for="n_order">Order nº: </label>
+                    <input id="n_order" type="number" disabled th:value="1287261"/>
+                </div>
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-2">
+                    <label for="open_date">Open date: </label>
+                    <input id="open_date" type="date" disabled
+                           th:value="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="products" class="table table-bordered table-striped dataTable" role="grid"
+                           aria-describedby="products_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="products" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+                                aria-label="Name: activate to sort column descending"
+                                style="width: 181px;">Name
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
+                                aria-label="Description: activate to sort column ascending" style="width: 222px;">
+                                Description
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
+                                aria-label="Category: activate to sort column ascending"
+                                style="width: 198px;">Category
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
+                                aria-label="Value: activate to sort column ascending"
+                                style="width: 154px;">Value
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
+                                aria-label="Quantity: activate to sort column ascending" style="width: 112px;">
+                                Quantity
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd">
+                            <td valign="top" colspan="5" class="dataTables_empty">No matching records found</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th rowspan="1" colspan="1">Name</th>
+                            <th rowspan="1" colspan="1">Description</th>
+                            <th rowspan="1" colspan="1">Category</th>
+                            <th rowspan="1" colspan="1">Value</th>
+                            <th rowspan="1" colspan="1">Quantity</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning">
+                        Dismiss order
+                    </button>
+                </div>
+                <div class="col-md-2">
 
-        <div class="form_description">
-            <h2 th:text="${readonly}?#{order.view}:#{order.edit}"></h2>
+                    <button type="button" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
+            </div>
         </div>
-        <ul>
-
-            <input id="element_0" name="element_0" type="hidden" value="" />
-
-            <li id="li_1"><label class="description" for="element_1">Nome
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-            <li id="li_1"><label class="description" for="element_1">Sobrenome
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Telefone
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_2"><label class="description" for="element_2">Email
-            </label>
-                <div>
-                    <input id="element_2" name="element_2" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-            <li id="li_1"><label class="description" for="element_1">CPF
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Rua
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Número
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Complemento
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Bairro
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Cidade
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li id="li_1"><label class="description" for="element_1">Estado
-            </label>
-                <div>
-                    <input id="element_1" name="element_1" class="element text medium"
-                           type="text" maxlength="255" value="" />
-                </div></li>
-
-            <li class="buttons"><input type="hidden" name="form_id"
-                                       value="1099345" /> <input id="saveForm" class="button_text"
-                                                                 type="submit" name="submit" value="Submit" /></li>
-        </ul>
     </form>
 </div>
 </html>

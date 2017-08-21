@@ -35,7 +35,7 @@ public class OrderController {
 	@GetMapping("/list")
 	public ModelAndView list(){
 		ModelAndView mav = new ModelAndView("/order/list");
-		mav.addObject("orders", orderService.list());
+		//mav.addObject("orders", orderService.list());
 
 		return mav;
 	}

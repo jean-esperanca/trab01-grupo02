@@ -1,5 +1,42 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/main}">
+<html layout:decorate="~{/layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<div layout:fragment="content">
+    <form id="form_1099345" class="appnitro" method="post" action="">
+        <div class="form_description">
+            <h2>Client List</h2>
+            <p>This is your form description. Click here to edit.</p>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Order number</th>
+                <th>Client name</th>
+                <th>products</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>192725</td>
+                <td>Fulano da Silva</td>
+                <td>36</td>
+                <td><a href="#">View</a>|<a href="#">Close</a> |<a href="#">Dismiss</a></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>712631</td>
+                <td>Ciclano de Souza</td>
+                <td>7</td>
+                <td><a href="#">View</a>|<a href="#">Close</a> |<a href="#">Dismiss</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br /> <a href="#">New</a>
+    </form>
+</div>
 
 </html>
