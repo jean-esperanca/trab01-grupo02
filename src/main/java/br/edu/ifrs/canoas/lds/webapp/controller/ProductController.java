@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.service.ProductService;
 
 /*
@@ -27,6 +28,14 @@ public class ProductController {
 	@GetMapping("list")
 	public ModelAndView list(){
 		return new ModelAndView("/product/list");
+	}
+	
+	@GetMapping("/create")
+	public ModelAndView create(){
+		ModelAndView mav = new ModelAndView("/product/form");
+		mav.addObject("product", new Product());
+		mav.addObject("isCreate", true);
+		return mav;
 	}
 	
 }

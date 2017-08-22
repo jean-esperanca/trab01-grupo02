@@ -1,7 +1,7 @@
 <html layout:decorate="~{/layouts/main}">
 
 <head>
-<title th:text="#{user.profile}" />
+<title th:text="#{product.list}" />
 </head>
 
 <!-- CONTENT HEADER -->
@@ -9,14 +9,14 @@
 	<section class="content-header">
 		<!-- PAGE TITLE -->
 		<h1>
-			<span th:text="#{user.profile}" />
+			<span th:text="#{product.list}" />
 		</h1>
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb">
 			<li><a href="#"> <i class="fa fa-dashboard"></i> <span
 					th:text="#{breadcrumb}" />
 			</a></li>
-			<li><a href="#"><span th:text="#{user.profile}" /></a></li>
+			<li><a href="#"><span th:text="#{product.list}" /></a></li>
 		</ol>
 	</section>
 </div>
@@ -32,10 +32,6 @@
 				<!-- /.box -->
 
 				<div class="box">
-					<div class="box-header">
-						<h3 class="box-title">Data Table With Full Features</h3>
-					</div>
-					<!-- /.box-header -->
 					<div class="box-body">
 						<div id="example1_wrapper"
 							class="dataTables_wrapper form-inline dt-bootstrap">
@@ -51,96 +47,128 @@
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending"
-													style="width: 197px;">Rendering engine</th>
+													style="width: 15px;"><span th:text="#{product.id}" /></th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Browser: activate to sort column ascending"
-													style="width: 242px;">Browser</th>
+													style="width: 242px;"><span th:text="#{product.name}" /></th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
-													style="width: 216px;">Platform(s)</th>
+													style="width: 216px;"><span
+													th:text="#{product.desc}" /></th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
-													style="width: 169px;">Engine version</th>
+													style="width: 169px;"><span
+													th:text="#{product.category}" /></th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="CSS grade: activate to sort column ascending"
-													style="width: 123px;">CSS grade</th>
+													style="width: 123px;"><span th:text="#{product.value}" /></th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="CSS grade: activate to sort column ascending"
+													style="width: 123px;"><span
+													th:text="#{product.quantity}" /></th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 169px;"><span
+													th:text="#{product.provider}" /></th>
 											</tr>
 										</thead>
 										<tbody>
 
 											<tr role="row" class="odd">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">1</td>
+												<td>Gecko</td>
 												<td>Firefox 1.0</td>
 												<td>Win 98+ / OSX.2+</td>
 												<td>1.7</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="even">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">2</td>
+												<td>Gecko</td>
 												<td>Firefox 1.5</td>
 												<td>Win 98+ / OSX.2+</td>
 												<td>1.8</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="odd">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">3</td>
+												<td>Gecko</td>
 												<td>Firefox 2.0</td>
 												<td>Win 98+ / OSX.2+</td>
 												<td>1.8</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="even">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">4</td>
+												<td>Gecko</td>
 												<td>Firefox 3.0</td>
 												<td>Win 2k+ / OSX.3+</td>
 												<td>1.9</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="odd">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">5</td>
+												<td>Gecko</td>
 												<td>Camino 1.0</td>
 												<td>OSX.2+</td>
 												<td>1.8</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="even">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">6</td>
+												<td>Gecko</td>
 												<td>Camino 1.5</td>
 												<td>OSX.3+</td>
 												<td>1.8</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="odd">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">7</td>
+												<td>Gecko</td>
 												<td>Netscape 7.2</td>
 												<td>Win 95+ / Mac OS 8.6-9.2</td>
 												<td>1.7</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="even">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">8</td>
+												<td>Gecko</td>
 												<td>Netscape Browser 8</td>
 												<td>Win 98SE+</td>
 												<td>1.7</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="odd">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">9</td>
+												<td>Gecko</td>
 												<td>Netscape Navigator 9</td>
 												<td>Win 98+ / OSX.2+</td>
 												<td>1.8</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 											<tr role="row" class="even">
-												<td class="sorting_1">Gecko</td>
+												<td class="sorting_1">10</td>
+												<td>Gecko</td>
 												<td>Mozilla 1.0</td>
 												<td>Win 95+ / OSX.1+</td>
 												<td>1</td>
 												<td>A</td>
+												<td>Teste</td>
 											</tr>
 										</tbody>
 
