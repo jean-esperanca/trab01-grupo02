@@ -1,42 +1,88 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layouts/main}">
 
-	<div layout:fragment="content">
-		<form id="form_1099345" class="appnitro" method="post" action="">
-			<div class="form_description">
-				<h2>Client List</h2>
-				<p>This is your form description. Click here to edit.</p>
-			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Description</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Full Name</td>
-						<td>email@email.com</td>
-						<td>Some description here</td>
-						<td><a href="#">Delete</a>|<a href="#">Edit</a> </td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Full Name</td>
-						<td>email@email.com</td>
-						<td>Some description here</td>
-						<td><a href="#">Delete</a>|<a href="#">Edit</a> </td>
-					</tr>
-					
-				</tbody>
-			</table>
-			<br /> <a href="#">New</a>
-		</form>
+	<div layout:fragment="content-header">
+		<section class="content-header">
+			<!-- PAGE TITLE -->
+			<h1>
+				<span th:text="#{client.title}" />
+			</h1>
+			
+		</section>
 	</div>
 
+	<div layout:fragment="content">
+		<!-- Main content -->
+
+		<section class="content">
+	
+			<div class="box-body">
+				<div id="example1_wrapper"
+					class="dataTables_wrapper form-inline dt-bootstrap">
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<table id="tabela_user"
+								class="table table-bordered table-striped dataTable" role="grid"
+								aria-describedby="example1_info">
+								<thead>
+									<tr role="row">
+										
+										<th th:text="#{client.name}" />
+										<th th:text="#{client.lastName}" />
+										<th th:text="#{client.email}" />
+										<th th:text="#{client.phone}" />
+										<th th:text="#{client.cpf}" />
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr role="row" class="odd" th:each="client : ${clients}">
+										<td><a href="#"
+											th:href="@{|/client/view/${client.id}|}"
+											th:text="|${client.name}|" /></td>
+										<td><a href="#"
+											th:href="@{|/client/view/${client.id}|}"
+											th:text="|${client.lastName}|" /></td>
+										<td><a href="#"
+											th:href="@{|/client/view/${client.id}|}"
+											th:text="|${client.email}|" /></td>
+										<td><a href="#"
+											th:href="@{|/client/view/${client.id}|}"
+											th:text="|${client.phone}|" /></td>
+										<td><a href="#"
+											th:href="@{|/client/view/${client.id}|}"
+											th:text="|${client.cpf}|" /></td>
+										<td><a th:href="@{/client/edit/}+${client.id}"> <span
+												class="badge" th:text="#{edit}" />
+										</a> <a th:href="@{/client/delete/}+${client.id}" class="delete">
+												<span class="badge" th:text="#{delete}" />
+										</a></td>
+						
+									</tr>
+								</tbody>
+								
+							</table>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+	</div>
+	<th:block layout:fragment="css-view">
+		<link rel="stylesheet" type="text/css"
+			href="/webjars/datatables/1.10.13/media/css/jquery.dataTables.min.css" />
+	</th:block>
+	
+	
+	
+	<th:block layout:fragment="js-view">
+		<script src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#tabela_user').DataTable();
+			});
+		</script>
+	</th:block>
 </html>

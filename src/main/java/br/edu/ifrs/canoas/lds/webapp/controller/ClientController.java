@@ -73,7 +73,7 @@ public class ClientController {
 	
 	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
-		ModelAndView mav = new ModelAndView("/client/list");
+		ModelAndView mav = new ModelAndView("redirect:/client/list");
 		clientService.delete(id);
 		
 		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));

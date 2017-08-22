@@ -14,5 +14,12 @@ insert into role(id, role) values
 
 -- USER_ROLES
 insert into user_roles (user_id, roles_id) values
-(1, 1),
+(1, 1);
+
+-- CLIENTS
+insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF ,STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE  ) values
+(1, 'Joao', 'Silva', 'joao.silva@email.com.br', '51-98765-4321', '012.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000'),
+(2, 'Maria', 'Silva', 'maria.silva@email.com.br', '51-98765-4321', '102.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000'),
+(3, 'Pedro', 'Silva', 'pedro.silva@email.com.br', '51-98765-4321', '002.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000');
+
 
