@@ -1,23 +1,19 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
-import java.util.Locale;
-
-import javax.validation.Valid;
-
+import br.edu.ifrs.canoas.lds.webapp.config.Messages;
+import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+import br.edu.ifrs.canoas.lds.webapp.service.ClientService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.edu.ifrs.canoas.lds.webapp.config.Messages;
-import br.edu.ifrs.canoas.lds.webapp.domain.Client;
-import br.edu.ifrs.canoas.lds.webapp.service.ClientService;
+import javax.validation.Valid;
+import java.util.Locale;
 
 /*
  *  Create by Edward Ramos Aug/10/2017
@@ -85,7 +81,7 @@ public class ClientController {
             RedirectAttributes redirectAttr, Locale locale){
 		
 		if (bindingResult.hasErrors()) {
-            return new ModelAndView("/client/list");
+            return new ModelAndView("/client/form");
         }
 		
 		ModelAndView mav = new ModelAndView("redirect:/client/list");

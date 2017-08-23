@@ -60,6 +60,15 @@
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.cpf}" />
 					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" th:class="help-block" />
 					</div></li>
+
+                <!-- ZipCode -->
+                <li id="li_1"><label class="description" for="element_1" th:text="#{client.zipcode}">
+                </label>
+                    <div th:classappend="${#fields.hasErrors('zipcode')}? 'has-error'">
+                        <input id="ClientZipcode" name="element_1" class="element text medium"
+                               type="text" maxlength="255" th:readonly="${isView}" th:field="${client.zipcode}" />
+                        <span th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" th:class="help-block" />
+                    </div></li>
 				
 				<!-- Rua -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.street}">
