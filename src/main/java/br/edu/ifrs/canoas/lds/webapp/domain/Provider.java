@@ -15,9 +15,16 @@ public class Provider {
 	@GeneratedValue
 	private Long id;
 	private String name;
+	private String cnpj;
+	private String email;
+	private String phone;
+	
+	
 	
 	public Provider(){}
 
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -34,5 +41,28 @@ public class Provider {
 		this.name = name;
 	}
 	
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	
 }

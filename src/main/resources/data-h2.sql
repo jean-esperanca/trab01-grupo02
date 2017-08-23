@@ -22,4 +22,16 @@ insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF ,STREET ,STREET_NUMBE
 (2, 'Maria', 'Silva', 'maria.silva@email.com.br', '51-98765-4321', '102.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000'),
 (3, 'Pedro', 'Silva', 'pedro.silva@email.com.br', '51-98765-4321', '002.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000');
 
+-- PROVIDER
+insert into PROVIDER (ID, CNPJ , EMAIL, NAME, PHONE) values 
+(1, '03.364.322/0001-08', 'wayne.inc@email.com', 'Bruce Wayne', '51-98765-4321'),
+(2, '22.686.317/0001-66', 'oliver.inc@email.com', 'Oliver Queen', '51-98765-4321');
 
+-- CATEGORY
+insert into CATEGORY (ID, NAME) values
+(1,'Placa-mãe'),
+(2,'Processador'),
+(3,'Memória RAM'),
+(4,'HD'),
+(5,'Placa de Vídeo'),
+(6,'Cabo');
