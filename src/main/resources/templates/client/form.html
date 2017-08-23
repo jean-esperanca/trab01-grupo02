@@ -16,90 +16,90 @@
 				<input type="hidden" id="ClientId" th:field="*{id}" />
 
 				<!-- Name -->
-				<li id="ClientName"><label class="description" for="element_1" th:text="#{client.name}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.name}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.name}" />
+						<input id="ClientName" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.name}" />
 					</div></li>
 				<!-- Lastname -->	
-				<li id="ClientLastName"><label class="description" for="element_1" th:text="#{client.lastName}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.lastName}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.lastName}" />
+						<input id="ClientLastName" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.lastName}" />
 					</div></li>
 				
 				<!-- Phone -->
-				<li id="ClientPhone"><label class="description" for="element_1" th:text="#{client.phone}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.phone}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.phone}" />
+						<input id="ClientPhone" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.phone}" />
 					</div></li>
 				
 				<!-- Email -->
-				<li id="ClientEmail"><label class="description" for="element_2" th:text="#{client.email}">
+				<li id="li_1"><label class="description" for="element_2" th:text="#{client.email}">
 				</label>
 					<div>
-						<input id="element_2" name="element_2" class="element text medium"
-							type="text" maxlength="255" th:field="${client.email}" />
+						<input id="ClientEmail" name="element_2" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.email}" />
 					</div></li>
 					
 				<!-- CPF -->
-				<li id="ClientCpf"><label class="description" for="element_1" th:text="#{client.cpf}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.cpf}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.cpf}" />
+						<input id="ClientCpf" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.cpf}" />
 					</div></li>
 				
 				<!-- Rua -->
-				<li id="ClientStreet"><label class="description" for="element_1" th:text="#{client.street}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.street}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.street}" />
+						<input id="ClientStreet" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.street}" />
 					</div></li>
 				
 				<!-- Number -->
-				<li id="ClientStreetNumber"><label class="description" for="element_1" th:text="#{client.streetNumber}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.streetNumber}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.streetNumber}" />
+						<input id="ClientStreetNumber" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.streetNumber}" />
 					</div></li>
 				
 				<!-- Complements -->
-				<li id="ClientComplements"><label class="description" for="element_1" th:text="#{client.complements}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.complements}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.complements}" />
+						<input id="ClientComplements" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.complements}" />
 					</div></li>
 				
 				<!-- Neighborhood -->
-				<li id="ClientNeighborhood"><label class="description" for="element_1" th:text="#{client.neighborhood}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.neighborhood}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.neighborhood}" />
+						<input id="ClientNeighborhood" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.neighborhood}" />
 					</div></li>
 				
 				<!-- City -->
-				<li id="ClientCity"><label class="description" for="element_1" th:text="#{client.city}">
+				<li id="li_1"><label class="description"  for="element_1" th:text="#{client.city}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.city}" />
+						<input id="ClientCity" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.city}" />
 					</div></li>
 				
 				<!-- State -->
-				<li id="ClientState"><label class="description" for="element_1" th:text="#{client.state}">
+				<li id="li_1"><label class="description" for="element_1" th:text="#{client.state}">
 				</label>
 					<div>
-						<input id="element_1" name="element_1" class="element text medium"
-							type="text" maxlength="255" th:field="${client.state}" />
+						<input id="ClientState" name="element_1" class="element text medium"
+							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.state}" />
 					</div></li>
 				
 				<!-- Submit -->
