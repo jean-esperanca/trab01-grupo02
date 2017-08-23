@@ -18,88 +18,101 @@
 				<!-- Name -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.name}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('name')}? 'has-error'">
 						<input id="ClientName" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.name}" />
+						
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:class="help-block" />
 					</div></li>
+					
 				<!-- Lastname -->	
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.lastName}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('lastName')}? 'has-error'">
 						<input id="ClientLastName" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.lastName}" />
+					<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Phone -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.phone}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('phone')}? 'has-error'">
 						<input id="ClientPhone" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.phone}" />
+					<span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Email -->
 				<li id="li_1"><label class="description" for="element_2" th:text="#{client.email}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('email')}? 'has-error'">
 						<input id="ClientEmail" name="element_2" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.email}" />
+					<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="help-block" />
 					</div></li>
 					
 				<!-- CPF -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.cpf}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
 						<input id="ClientCpf" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.cpf}" />
+					<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Rua -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.street}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('street')}? 'has-error'">
 						<input id="ClientStreet" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.street}" />
+					<span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Number -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.streetNumber}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('streetNumber')}? 'has-error'">
 						<input id="ClientStreetNumber" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.streetNumber}" />
+					<span th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Complements -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.complements}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('complements')}? 'has-error'">
 						<input id="ClientComplements" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.complements}" />
+					<span th:if="${#fields.hasErrors('complements')}" th:errors="*{complements}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Neighborhood -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.neighborhood}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('neighborhood')}? 'has-error'">
 						<input id="ClientNeighborhood" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.neighborhood}" />
+					<span th:if="${#fields.hasErrors('neighborhood')}" th:errors="*{neighborhood}" th:class="help-block" />
 					</div></li>
 				
 				<!-- City -->
 				<li id="li_1"><label class="description"  for="element_1" th:text="#{client.city}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('city')}? 'has-error'">
 						<input id="ClientCity" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.city}" />
+					<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" th:class="help-block" />
 					</div></li>
 				
 				<!-- State -->
 				<li id="li_1"><label class="description" for="element_1" th:text="#{client.state}">
 				</label>
-					<div>
+					<div th:classappend="${#fields.hasErrors('state')}? 'has-error'">
 						<input id="ClientState" name="element_1" class="element text medium"
 							type="text" maxlength="255" th:readonly="${isView}" th:field="${client.state}" />
+					<span th:if="${#fields.hasErrors('state')}" th:errors="*{state}" th:class="help-block" />
 					</div></li>
 				
 				<!-- Submit -->

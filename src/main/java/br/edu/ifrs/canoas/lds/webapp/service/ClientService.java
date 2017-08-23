@@ -19,6 +19,7 @@ public class ClientService {
 	}
 
 	public Client save(Client client){
+		/*
 		Client fetchedClient = this.getOne(client);
 		
 		fetchedClient.setName(client.getName());
@@ -33,8 +34,8 @@ public class ClientService {
 		fetchedClient.setCity(client.getCity());
 		fetchedClient.setState(client.getState());
 		fetchedClient.setZipcode(client.getZipcode());
-		
-		return clientRepository.save(fetchedClient);
+		*/
+		return clientRepository.save(client);
 	}
 
 	public Client getOne(Client client){
