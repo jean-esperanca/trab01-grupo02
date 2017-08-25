@@ -35,3 +35,9 @@ insert into CATEGORY (ID, NAME) values
 (104,'HD'),
 (105,'Placa de Vídeo'),
 (106,'Cabo');
+
+-- PRODUCT
+insert into PRODUCT (ID ,CATEGORY ,DESCRIPTION ,NAME ,QUANTITY ,VALUE ,PROVIDER_ID) values
+(1, 'Placa Mãe', 'Qualquer Coisa', 'Computador', 5, 25, 101),
+(2, 'Processador', 'Outra Coisa', 'Notebook', 2, 2000, 102),
+(3, 'Memória', 'Teste', 'Monitor', 2, 200, 102);

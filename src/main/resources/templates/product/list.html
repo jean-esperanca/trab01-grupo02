@@ -55,8 +55,7 @@
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending"
-													style="width: 216px;"><span
-													th:text="#{product.desc}" /></th>
+													style="width: 216px;"><span th:text="#{product.desc}" /></th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending"
@@ -79,97 +78,17 @@
 											</tr>
 										</thead>
 										<tbody>
-
-											<tr role="row" class="odd">
-												<td class="sorting_1">1</td>
-												<td>Gecko</td>
-												<td>Firefox 1.0</td>
-												<td>Win 98+ / OSX.2+</td>
-												<td>1.7</td>
-												<td>A</td>
-												<td>Teste</td>
+											<tr role="row" class="odd" th:each="product : ${products}">
+												<td th:text="${product.id}"></td>
+												<td th:text="${product.name}"></td>
+												<td th:text="${product.desc}"></td>
+												<td th:text="${product.category}"></td>
+												<td th:text="${product.value}"></td>
+												<td th:text="${product.quantity}"></td>
+												<td th:text="${product.provider}"></td>
+												
 											</tr>
-											<tr role="row" class="even">
-												<td class="sorting_1">2</td>
-												<td>Gecko</td>
-												<td>Firefox 1.5</td>
-												<td>Win 98+ / OSX.2+</td>
-												<td>1.8</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="odd">
-												<td class="sorting_1">3</td>
-												<td>Gecko</td>
-												<td>Firefox 2.0</td>
-												<td>Win 98+ / OSX.2+</td>
-												<td>1.8</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="even">
-												<td class="sorting_1">4</td>
-												<td>Gecko</td>
-												<td>Firefox 3.0</td>
-												<td>Win 2k+ / OSX.3+</td>
-												<td>1.9</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="odd">
-												<td class="sorting_1">5</td>
-												<td>Gecko</td>
-												<td>Camino 1.0</td>
-												<td>OSX.2+</td>
-												<td>1.8</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="even">
-												<td class="sorting_1">6</td>
-												<td>Gecko</td>
-												<td>Camino 1.5</td>
-												<td>OSX.3+</td>
-												<td>1.8</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="odd">
-												<td class="sorting_1">7</td>
-												<td>Gecko</td>
-												<td>Netscape 7.2</td>
-												<td>Win 95+ / Mac OS 8.6-9.2</td>
-												<td>1.7</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="even">
-												<td class="sorting_1">8</td>
-												<td>Gecko</td>
-												<td>Netscape Browser 8</td>
-												<td>Win 98SE+</td>
-												<td>1.7</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="odd">
-												<td class="sorting_1">9</td>
-												<td>Gecko</td>
-												<td>Netscape Navigator 9</td>
-												<td>Win 98+ / OSX.2+</td>
-												<td>1.8</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
-											<tr role="row" class="even">
-												<td class="sorting_1">10</td>
-												<td>Gecko</td>
-												<td>Mozilla 1.0</td>
-												<td>Win 95+ / OSX.1+</td>
-												<td>1</td>
-												<td>A</td>
-												<td>Teste</td>
-											</tr>
+												
 										</tbody>
 
 									</table>
