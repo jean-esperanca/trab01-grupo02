@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layouts/main}">
 
+	<!-- CONTENT HEADER -->
+	<div layout:fragment="content-header">
+		<section class="content-header">
+			<!-- PAGE TITLE -->
+			<h1>
+				<span th:text="#{client.title}" />
+			</h1>
+			<!-- BREADCRUMB -->
+			<ol class="breadcrumb">
+				<li><a href="#"> <i class="fa fa-dashboard"></i> <span
+						th:text="#{breadcrumb}" />
+				</a></li>
+				<li><a href="#"><span th:text="#{client.title}" /></a></li>
+			</ol>
+		</section>
+	</div>
+
 	<div layout:fragment="content-header">
 		<section class="content-header">
 			<!-- PAGE TITLE -->
@@ -28,11 +45,35 @@
 								<thead>
 									<tr role="row">
 										
-										<th th:text="#{client.name}" />
-										<th th:text="#{client.lastName}" />
-										<th th:text="#{client.email}" />
-										<th th:text="#{client.phone}" />
-										<th th:text="#{client.cpf}" />
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{client.name}"></span> </th>
+										
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{client.lastName}" ></span> </th>
+										
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{client.email}" ></span> </th>
+										
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{client.phone}" ></span> </th>
+										
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{client.cpf}" ></span> </th>
+										
+										<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span  ></span> </th>
 										
 									</tr>
 								</thead>
