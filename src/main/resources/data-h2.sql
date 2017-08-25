@@ -4,7 +4,8 @@ insert into file(id, content) values
 
 --AUTHENTICATION
 INSERT into user(id, username, password, name, email, experience, skill, active, picture_id) VALUES
-(1, 'user', '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', 'Master Yoda','yoda@stars.wars','Masters Unidentified Jedi, Garro, Qui-Gon Jinn', 'Deflect Force Lightning, Strategic Mastery, Acting Skills, Indomitable Will, Battle Meditation, Sensing Death And Force-aided Acrobatics.',  TRUE, 0);
+(1, 'user', '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', 'Master Yoda','yoda@stars.wars','Masters Unidentified Jedi, Garro, Qui-Gon Jinn', 'Deflect Force Lightning, Strategic Mastery, Acting Skills, Indomitable Will, Battle Meditation, Sensing Death And Force-aided Acrobatics.',  TRUE, 0),
+(2, 'admin','$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', 'Usuário Teste ','usuario@ifrs.canoas','Masters Unidentified Jedi, Garro, Qui-Gon Jinn', 'Deflect Force Lightning, Strategic Mastery, Acting Skills, Indomitable Will, Battle Meditation, Sensing Death And Force-aided Acrobatics.',  TRUE, 0);
 
 --ROLES
 insert into role(id, role) values
@@ -14,7 +15,8 @@ insert into role(id, role) values
 
 -- USER_ROLES
 insert into user_roles (user_id, roles_id) values
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- CLIENTS
 insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF ,STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE  ) values

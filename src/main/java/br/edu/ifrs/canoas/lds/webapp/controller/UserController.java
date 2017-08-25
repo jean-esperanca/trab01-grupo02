@@ -55,7 +55,7 @@ public class UserController {
     @GetMapping("/list")
     public ModelAndView list(){
     	ModelAndView mav = new ModelAndView("/user/list");
-    	mav.addObject("users",userService.list());
+    	mav.addObject("myUsers",userService.list());
     
 		return mav;
 		
