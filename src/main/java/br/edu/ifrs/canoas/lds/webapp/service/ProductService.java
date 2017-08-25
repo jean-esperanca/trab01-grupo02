@@ -1,7 +1,10 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
 
 /*
@@ -17,4 +20,7 @@ public class ProductService {
 		this.productRepository = productRepository;
 	}
 	
+	public List<Product> findAll(){
+		return productRepository.findAll();
+	}
 }

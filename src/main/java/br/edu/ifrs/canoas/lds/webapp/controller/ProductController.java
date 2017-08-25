@@ -27,7 +27,9 @@ public class ProductController {
 	
 	@GetMapping("list")
 	public ModelAndView list(){
-		return new ModelAndView("/product/list");
+		ModelAndView mav = new ModelAndView("/product/list");
+		mav.addObject("products", productService.findAll());
+		return mav;
 	}
 	
 	@GetMapping("/create")
@@ -39,3 +41,5 @@ public class ProductController {
 	}
 	
 }
+
+
