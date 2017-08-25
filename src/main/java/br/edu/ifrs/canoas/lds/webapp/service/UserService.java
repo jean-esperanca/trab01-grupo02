@@ -2,7 +2,7 @@ package br.edu.ifrs.canoas.lds.webapp.service;
 
 import org.springframework.stereotype.Service;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+
 import br.edu.ifrs.canoas.lds.webapp.domain.User;
 import br.edu.ifrs.canoas.lds.webapp.repository.UserRepository;
 
@@ -32,5 +32,12 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+	public void delete(Long id){
+		userRepository.deleteById(id);
+	}
+	
+	public User getId(Long id){
+		return userRepository.getOne(id);
+	}
 
 }

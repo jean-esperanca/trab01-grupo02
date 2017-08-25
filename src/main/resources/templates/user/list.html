@@ -45,6 +45,7 @@
 									<th th:text="#{user.name}" />
 									<th th:text="#{user.email}" />
 									<th th:text="#{user.role}" />
+									<th><span></span></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -64,7 +65,12 @@
 										<div th:each="role : ${myUser.roles}">
 											<span th:text="${role.role}"></span>
 										</div>
-									</td>										
+									</td>
+									<td><a th:href="@{/user/edit/}+${myUser.id}"> <span
+											class="badge" th:text="#{edit}" />
+									</a> <a th:href="@{/user/delete/}+${myUser.id}" class="delete">
+											<span class="badge" th:text="#{delete}" />
+									</a></td>
 
 								</tr>
 							</tbody>

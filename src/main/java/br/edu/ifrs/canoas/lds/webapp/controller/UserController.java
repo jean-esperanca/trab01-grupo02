@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,6 +61,24 @@ public class UserController {
 		return mav;
 		
     }
+    
+    @GetMapping("/edit/{id}")
+	public ModelAndView edit(@PathVariable("id") Long id){
+		ModelAndView mav = new ModelAndView("/user/form");
+		
+		mav.addObject("myUsers", userService.getId(id));
+		mav.addObject("isEdit", true); //false = editable fields
+		return mav;
+	}
+	
+	@GetMapping("/delete/{id}")
+	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
+		ModelAndView mav = new ModelAndView("redirect:/user/list");
+		userService.delete(id);
+		
+		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		return mav;
+	}
     
     
     
