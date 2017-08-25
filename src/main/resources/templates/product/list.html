@@ -75,20 +75,27 @@
 													aria-label="Engine version: activate to sort column ascending"
 													style="width: 169px;"><span
 													th:text="#{product.provider}" /></th>
+												<th style="width: 169px;"></th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr role="row" class="odd" th:each="product : ${products}">
 												<td th:text="${product.id}"></td>
 												<td th:text="${product.name}"></td>
-												<td th:text="${product.desc}"></td>
+												<td th:text="${product.description}"></td>
 												<td th:text="${product.category}"></td>
 												<td th:text="${product.value}"></td>
 												<td th:text="${product.quantity}"></td>
-												<td th:text="${product.provider}"></td>
-												
+												<td th:text="${product.provider.id}"></td>
+
+												<td><a th:href="@{/product/edit/}+${product.id}"> <span
+														class="badge" th:text="#{edit}" />
+												</a> <a th:href="@{/product/delete/}+${product.id}"
+													class="delete"> <span class="badge" th:text="#{delete}" />
+												</a></td>
+
 											</tr>
-												
+
 										</tbody>
 
 									</table>
