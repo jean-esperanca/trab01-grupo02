@@ -1,42 +1,121 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{/layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 
-<div layout:fragment="content">
-    <form id="form_1099345" class="appnitro" method="post" action="">
-        <div class="form_description">
-            <h2>Client List</h2>
-            <p>This is your form description. Click here to edit.</p>
-        </div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Order number</th>
-                <th>Client name</th>
-                <th>products</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>192725</td>
-                <td>Fulano da Silva</td>
-                <td>36</td>
-                <td><a href="#">View</a>|<a href="#">Close</a> |<a href="#">Dismiss</a></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>712631</td>
-                <td>Ciclano de Souza</td>
-                <td>7</td>
-                <td><a href="#">View</a>|<a href="#">Close</a> |<a href="#">Dismiss</a></td>
-            </tr>
-
-            </tbody>
-        </table>
-        <br /> <a href="#">New</a>
-    </form>
+<!-- CONTENT HEADER -->
+<div layout:fragment="content-header">
+    <section class="content-header">
+        <!-- PAGE TITLE -->
+        <h1>
+            <span th:text="#{purchase.title}"/>
+        </h1>
+        <!-- BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li><a href="#"> <i class="fa fa-dashboard"></i> <span
+                    th:text="#{breadcrumb}"/>
+            </a></li>
+            <li><a href="#"><span th:text="#{purchase.title}"/></a></li>
+        </ol>
+    </section>
 </div>
 
+<div layout:fragment="content-header">
+    <section class="content-header">
+        <!-- PAGE TITLE -->
+        <h1>
+            <span th:text="#{purchase.title}"/>
+        </h1>
+
+    </section>
+</div>
+
+<div layout:fragment="content">
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="box-body">
+            <div id="example1_wrapper"
+                 class="dataTables_wrapper form-inline dt-bootstrap">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="tabela_order"
+                               class="table table-bordered table-striped dataTable" role="grid"
+                               aria-describedby="example1_info">
+                            <thead>
+                            <tr role="row">
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.id}"></span></th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.client.name}"></span></th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.price}"></span></th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.orderDate}"></span></th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span></span></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr role="row" class="odd" th:each="purchase : ${purchases}">
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.id}|"/></td>
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.client.name}|"/></td>
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.price}|"/></td>
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.orderDate}|"/></td>
+                                <td><a th:href="@{/purchase/edit/}+${purchase.id}"> <span
+                                        class="badge" th:text="#{edit}"/>
+                                </a> <a th:href="@{/purchase/delete/}+${purchase.id}" class="delete">
+                                    <span class="badge" th:text="#{delete}"/>
+                                </a></td>
+
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<th:block layout:fragment="css-view">
+    <link rel="stylesheet" type="text/css"
+          href="/webjars/datatables/1.10.13/media/css/jquery.dataTables.min.css"/>
+</th:block>
+
+
+<th:block layout:fragment="js-view">
+    <script src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabela_order').DataTable();
+        });
+    </script>
+</th:block>
 </html>

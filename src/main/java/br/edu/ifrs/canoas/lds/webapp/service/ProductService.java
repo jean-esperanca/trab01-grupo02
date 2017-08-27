@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.edu.ifrs.canoas.lds.webapp.domain.Client;
 import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
 
@@ -23,4 +24,17 @@ public class ProductService {
 	public List<Product> findAll(){
 		return productRepository.findAll();
 	}
+	
+	public Product getId(Long id){
+		return productRepository.getOne(id);
+	}
+	
+	public void delete(Long id){
+		productRepository.deleteById(id);
+	}
+	
+	public Product getOne(Product product){
+		return productRepository.findById(product.getId()).get();
+	}
+
 }

@@ -1,6 +1,6 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.Order;
+import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,7 +53,7 @@ public class OrderController {
 	public ModelAndView create(){
 		ModelAndView mav = new ModelAndView("/order/form");
 
-		mav.addObject("order", new Order());
+		mav.addObject("order", new Purchase());
 		mav.addObject("readOnly", false); //false = editable fields
 		return mav;
 	}
@@ -77,15 +77,15 @@ public class OrderController {
 	}
 
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Order order, BindingResult bindingResult,
-							 RedirectAttributes redirectAttr, Locale locale){
+	public ModelAndView save(@Valid Purchase purchase, BindingResult bindingResult,
+                             RedirectAttributes redirectAttr, Locale locale){
 
 		if (bindingResult.hasErrors()) {
-			return new ModelAndView("/order/list");
+			return new ModelAndView("/purchase/list");
 		}
 
-		ModelAndView mav = new ModelAndView("redirect:/order/list");
-		mav.addObject("order", orderService.save(order));
+		ModelAndView mav = new ModelAndView("redirect:/purchase/list");
+		mav.addObject("purchase", orderService.save(purchase));
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 
 		return mav;

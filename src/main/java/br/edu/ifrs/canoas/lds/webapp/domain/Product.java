@@ -1,9 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * "Produto" in portuguese
@@ -22,7 +20,10 @@ public class Product {
 	private Integer quantity;
 	@ManyToOne
 	private Provider provider;
-	
+
+	@ManyToMany(mappedBy = "products")
+	private List<Purchase> purchases;
+
 	public Product(){}
 	
 	public Long getId() {
@@ -67,8 +68,12 @@ public class Product {
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
-	
-	
-	
-	
+
+	public List<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(List<Purchase> purchases) {
+		this.purchases = purchases;
+	}
 }

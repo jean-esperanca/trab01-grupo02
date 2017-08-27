@@ -2,8 +2,8 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/main}">
 <div layout:fragment="content">
-    <form id="form_1099345" class="appnitro" method="post" th:action="@{/order/save}"
-          th:object="${order}">
+    <form id="form_1099345" class="appnitro" method="post" th:action="@{/purchase/save}"
+          th:object="${purchase}">
         <div class="container-fluid">
             <div class="row form-control">
                 <div class="col-md-2">
@@ -15,7 +15,7 @@
                 <div class="col-md-2">
                     <label for="open_date">Open date: </label>
                     <input id="open_date" type="date" disabled
-                           th:value="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"/>
+                           th:value="${#dates.format(#dates.createNow(), 'dd/mm/yyyy')}"/>
                 </div>
             </div>
             <div class="row">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-warning">
-                        Dismiss order
+                        Dismiss purchase
                     </button>
                 </div>
                 <div class="col-md-2">

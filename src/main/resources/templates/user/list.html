@@ -31,7 +31,7 @@
 		<div class="box-body">
 			<div id="example1_wrapper"
 				class="dataTables_wrapper form-inline dt-bootstrap">
-				
+
 				<div class="row">
 					<div class="col-sm-12">
 						<table id="tabela_user"
@@ -39,24 +39,46 @@
 							aria-describedby="example1_info">
 							<thead>
 								<tr role="row">
-									<th class="sorting" tabindex="0" aria-controls="example1"
-										rowspan="1" colspan="1"
-										aria-label="Rendering engine: activate to sort column ascending"
-										style="width: 197px;">Rendering engine</th>
-									
+									<th th:text="#{user.id}" />
+									<th th:text="#{user.title}" />
+									<th th:text="#{user.status}" />
+									<th th:text="#{user.name}" />
+									<th th:text="#{user.email}" />
+									<th th:text="#{user.role}" />
+									<th><span></span></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr role="row" class="odd">
-									<td class="">Other browsers</td>
-					
+								<tr role="row" class="odd" th:each="myUser : ${myUsers}">
+
+									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"><span
+											th:text="${myUser.id}" /> </a></td>
+									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
+										th:text="${myUser.username}" /></td>
+									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
+										th:text="${myUser.status}" /></td>
+									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
+										th:text="${myUser.name}" /></td>
+									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
+										th:text="${myUser.email}" /></td>
+									<td>
+										<div th:each="role : ${myUser.roles}">
+											<span th:text="${role.role}"></span>
+										</div>
+									</td>
+									<td><a th:href="@{/user/edit/}+${myUser.id}"> <span
+											class="badge" th:text="#{edit}" />
+									</a> <a th:href="@{/user/delete/}+${myUser.id}" class="delete">
+											<span class="badge" th:text="#{delete}" />
+									</a></td>
+
 								</tr>
 							</tbody>
-							
+
 						</table>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</section>
@@ -70,7 +92,8 @@
 
 
 <th:block layout:fragment="js-view">
-	<script src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
+	<script
+		src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#tabela_user').DataTable();

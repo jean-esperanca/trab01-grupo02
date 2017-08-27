@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Entity
-public class Order {
+public class Purchase {
 
 	@Id
 	@GeneratedValue
@@ -24,18 +24,18 @@ public class Order {
 	private List<Product> products;
 
 	private Double price;
-	private Date orderDate;
+	private Date purchaseDate;
 
-	public Order() {}
+	public Purchase() {}
 
-	/*
-	public Order(Client order, List<Product> products, double price, Date date) {
-		this.client = order;
+
+	public Purchase(Client purchase, List<Product> products, double price, Date date) {
+		this.client = purchase;
 		this.products = products;
 		this.price = price;
-		this.date = date;
+		this.purchaseDate = date;
 	}
-*/
+
 	public Long getId() {
 		return id;
 	}
@@ -46,7 +46,7 @@ public class Order {
 
 	public Client getClient() {return client;}
 
-	public void setClient(Client order) {this.client = order;}
+	public void setClient(Client purchase) {this.client = purchase;}
 
 	public List<Product> getProducts() {return products;}
 
@@ -60,11 +60,11 @@ public class Order {
 		this.price = price;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	public Date getPurchaseDate() {
+		return purchaseDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
 	}
 }

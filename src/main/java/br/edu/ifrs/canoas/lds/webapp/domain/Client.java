@@ -3,9 +3,12 @@ package br.edu.ifrs.canoas.lds.webapp.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+
+import java.util.List;
 
 /**
  * "Cliente" in portuguese
@@ -43,7 +46,10 @@ public class Client {
 	private String state;
 	@NotNull
 	private String zipcode;
-	
+
+	@OneToMany
+	private List<Purchase> purchases;
+
 	public Client(){}
 	public Client(Long id, String name, String lastName, String email, String phone, String cpf, String street,
 			Long streetNumber, String complements, String neighborhood, String city, String state, String zipcode) {
@@ -140,8 +146,12 @@ public class Client {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	
-	
-	
+
+	public List<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(List<Purchase> purchases) {
+		this.purchases = purchases;
+	}
 }
