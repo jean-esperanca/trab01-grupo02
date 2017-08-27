@@ -4,17 +4,17 @@ insert into file(id, content) values
 
 --AUTHENTICATION
 INSERT into user(id, username, password, name, email, experience, skill, active, picture_id) VALUES
-(1, 'user', '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', 'Master Yoda','yoda@stars.wars','Masters Unidentified Jedi, Garro, Qui-Gon Jinn', 'Deflect Force Lightning, Strategic Mastery, Acting Skills, Indomitable Will, Battle Meditation, Sensing Death And Force-aided Acrobatics.',  TRUE, 0);
+(100, 'user', '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', 'Master Yoda','yoda@stars.wars','Masters Unidentified Jedi, Garro, Qui-Gon Jinn', 'Deflect Force Lightning, Strategic Mastery, Acting Skills, Indomitable Will, Battle Meditation, Sensing Death And Force-aided Acrobatics.',  TRUE, 0);
 
 --ROLES
 insert into role(id, role) values
-(1, 'ROLE_USER'),
-(2, 'ROLE_ADMIN'),
-(3, 'ROLE_MANAGER');
+(100, 'ROLE_USER'),
+(200, 'ROLE_ADMIN'),
+(300, 'ROLE_MANAGER');
 
 -- USER_ROLES
 insert into user_roles (user_id, roles_id) values
-(1, 1);
+(100, 100);
 
 -- CLIENTS
 insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF ,STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE  ) values
@@ -38,6 +38,8 @@ insert into CATEGORY (ID, NAME) values
 
 -- PRODUCT
 insert into PRODUCT (ID ,CATEGORY ,DESCRIPTION ,NAME ,QUANTITY ,VALUE ,PROVIDER_ID) values
-(1, 'Placa Mãe', 'Qualquer Coisa', 'Computador', 5, 25, 101),
-(2, 'Processador', 'Outra Coisa', 'Notebook', 2, 2000, 102),
-(3, 'Memória', 'Teste', 'Monitor', 2, 200, 102);
+(100, 'Placa Mãe', 'Qualquer Coisa', 'Computador', 5, 25, 101),
+(200, 'Processador', 'Outra Coisa', 'Notebook', 2, 2000, 102),
+(300, 'Memória', 'Teste', 'Monitor', 2, 200, 102);
+
+-- ORDER
