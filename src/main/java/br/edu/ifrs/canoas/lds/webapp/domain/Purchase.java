@@ -1,7 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -18,22 +18,24 @@ public class Order {
 	private Long id;
 
 	@ManyToOne
-	private Client order;
+	private Client client;
 
 	@ManyToMany
 	private List<Product> products;
-	private double price;
-	private Date date;
+
+	private Double price;
+	private Date orderDate;
 
 	public Order() {}
 
+	/*
 	public Order(Client order, List<Product> products, double price, Date date) {
-		this.order = order;
+		this.client = order;
 		this.products = products;
 		this.price = price;
 		this.date = date;
 	}
-
+*/
 	public Long getId() {
 		return id;
 	}
@@ -42,35 +44,27 @@ public class Order {
 		this.id = id;
 	}
 
-	public Client getClient() {
-		return order;
-	}
+	public Client getClient() {return client;}
 
-	public void setClient(Client order) {
-		this.order = order;
-	}
+	public void setClient(Client order) {this.client = order;}
 
-	public List<Product> getProducts() {
-		return products;
-	}
+	public List<Product> getProducts() {return products;}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
+	public void setProducts(List<Product> products) {this.products = products;}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getOrderDate() {
+		return orderDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 }
