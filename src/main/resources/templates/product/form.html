@@ -32,9 +32,9 @@
 				<div class="box box-info">
 					<div class="box-header with-border">
 						<h3 class="box-title">
-							<span th:if="${isEdit}" th:text="#{product.edit}"></span>
-							<span th:if="${isView}" th:text="#{product.view}"></span>
-							<span th:if="${isCreate}" th:text="#{product.new}"></span>
+							<span th:if="${isEdit}" th:text="#{product.edit}"></span> <span
+								th:if="${isView}" th:text="#{product.view}"></span> <span
+								th:if="${isCreate}" th:text="#{product.new}"></span>
 						</h3>
 					</div>
 					<!-- /.box-header -->
@@ -42,7 +42,7 @@
 					<form class="form-horizontal">
 
 
-						
+
 						<div class="box-body">
 
 							<div class="form-group">
@@ -51,7 +51,8 @@
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="inputName"
-										placeholder="Name" th:readonly="${isView}" th:field="${product.name}">
+										placeholder="Name" th:readonly="${isView}"
+										th:field="${product.name}">
 								</div>
 							</div>
 
@@ -61,19 +62,30 @@
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="inputDesc"
-										placeholder="Description" th:readonly="${isView}" th:field="${product.description}">
+										placeholder="Description" th:readonly="${isView}"
+										th:field="${product.description}">
 								</div>
 							</div>
+
+
+
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.category}" /></label>
 
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="inputCategory"
-										placeholder="Category" th:readonly="${isView}" th:field="${product.category}">
+									<select  th:field="*{product}" type="text" class="form-control" id="inputCategory"
+										placeholder="Category" th:readonly="${isView}">
+										<option th:each="product: ${products}"
+											th:value="${product.category}"></option>
+									</select>
+
 								</div>
 							</div>
+
+
+
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
@@ -81,9 +93,12 @@
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="inputValue"
-										placeholder="Value" th:readonly="${isView}" th:field="${product.value}">
+										placeholder="Value" th:readonly="${isView}"
+										th:field="${product.value}">
 								</div>
 							</div>
+
+
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
@@ -91,7 +106,8 @@
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="inputQuantity"
-										placeholder="Quantity" th:readonly="${isView}" th:field="${product.quantity}">
+										placeholder="Quantity" th:readonly="${isView}"
+										th:field="${product.quantity}">
 								</div>
 							</div>
 
@@ -101,7 +117,8 @@
 
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="inputProvider"
-										placeholder="Provider" th:readonly="${isView}" th:field="${product.provider}">
+										placeholder="Provider" th:readonly="${isView}"
+										th:field="${product.provider}">
 								</div>
 							</div>
 
