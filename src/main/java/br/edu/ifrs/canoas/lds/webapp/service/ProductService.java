@@ -1,12 +1,12 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
-import java.util.List;
-
+import br.edu.ifrs.canoas.lds.webapp.domain.Category;
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
+import br.edu.ifrs.canoas.lds.webapp.repository.CategoryRepository;
+import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.Client;
-import br.edu.ifrs.canoas.lds.webapp.domain.Product;
-import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
+import java.util.List;
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -16,9 +16,11 @@ import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
 public class ProductService {
 
 	private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-	public ProductService(ProductRepository productRepository) {
+	public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
 		this.productRepository = productRepository;
+		this.categoryRepository = categoryRepository;
 	}
 	
 	public List<Product> findAll(){
@@ -37,4 +39,7 @@ public class ProductService {
 		return productRepository.findById(product.getId()).get();
 	}
 
+    public List<Category> findAllCategories() {
+	    return categoryRepository.findAll();
+    }
 }

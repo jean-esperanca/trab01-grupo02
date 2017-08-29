@@ -38,6 +38,7 @@ public class ProductController {
 	public ModelAndView create(){
 		ModelAndView mav = new ModelAndView("/product/form");
 		mav.addObject("product", new Product());
+        mav.addObject("categories", productService.findAllCategories());
 		mav.addObject("isCreate", true);
 		return mav;
 	}
