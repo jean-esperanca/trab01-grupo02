@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
-import br.edu.ifrs.canoas.lds.webapp.service.OrderService;
+import br.edu.ifrs.canoas.lds.webapp.service.PurchaseService;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,56 +21,56 @@ import java.util.Locale;
  *  
  */
 @Controller
-@RequestMapping("/order/")
-public class OrderController {
+@RequestMapping("/purchase/")
+public class PurchaseController {
 
 	private final Messages messages;
-	private final OrderService orderService;
+	private final PurchaseService purchaseService;
 
-	public OrderController(Messages messages, OrderService orderService) {
+	public PurchaseController(Messages messages, PurchaseService purchaseService) {
 		this.messages = messages;
-		this.orderService = orderService;
+		this.purchaseService = purchaseService;
 	}
 
 	@GetMapping("/list")
 	public ModelAndView list(){
-		ModelAndView mav = new ModelAndView("/order/list");
-		//mav.addObject("orders", orderService.list());
+		ModelAndView mav = new ModelAndView("/purchase/list");
+		//mav.addObject("purchases", purchaseService.list());
 
 		return mav;
 	}
 
 	@GetMapping("/view/{id}")
 	public ModelAndView view(@PathVariable Long id){
-		ModelAndView mav = new ModelAndView("/order/form");
+		ModelAndView mav = new ModelAndView("/purchase/form");
 
-		mav.addObject("order", orderService.getId(id));
+		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("readOnly", true); //true = No editable fields
 		return mav;
 	}
 
 	@GetMapping("/create")
 	public ModelAndView create(){
-		ModelAndView mav = new ModelAndView("/order/form");
+		ModelAndView mav = new ModelAndView("/purchase/form");
 
-		mav.addObject("order", new Purchase());
+		mav.addObject("purchase", new Purchase());
 		mav.addObject("readOnly", false); //false = editable fields
 		return mav;
 	}
 
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id){
-		ModelAndView mav = new ModelAndView("/order/form");
+		ModelAndView mav = new ModelAndView("/purchase/form");
 
-		mav.addObject("order", orderService.getId(id));
+		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("readOnly", false); //false = editable fields
 		return mav;
 	}
 
 	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
-		ModelAndView mav = new ModelAndView("/order/list");
-		orderService.delete(id);
+		ModelAndView mav = new ModelAndView("/purchase/list");
+		purchaseService.delete(id);
 
 		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
 		return mav;
@@ -85,7 +85,7 @@ public class OrderController {
 		}
 
 		ModelAndView mav = new ModelAndView("redirect:/purchase/list");
-		mav.addObject("purchase", orderService.save(purchase));
+		mav.addObject("purchase", purchaseService.save(purchase));
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 
 		return mav;
