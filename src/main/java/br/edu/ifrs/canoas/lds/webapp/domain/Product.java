@@ -15,7 +15,9 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-	private String category;
+	@ManyToOne
+	private Category category;
+	
 	private Double value;
 	private Integer quantity;
 	@ManyToOne
@@ -23,6 +25,7 @@ public class Product {
 
 	@ManyToMany(mappedBy = "products")
 	private List<Purchase> purchases;
+
 
 	public Product(){}
 	
@@ -44,12 +47,15 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCategory() {
-		return category;
+
+	public Category getCategory() {
+		return this.category;
 	}
-	public void setCategory(String category) {
+
+	public void setCategory(Category category) {
 		this.category = category;
 	}
+
 	public Double getValue() {
 		return value;
 	}
