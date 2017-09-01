@@ -38,9 +38,9 @@ insert into CATEGORY (ID, NAME) values
 (106,'Cabo');
 
 -- PRODUCT
-insert into PRODUCT (ID ,CATEGORY ,DESCRIPTION ,NAME ,QUANTITY ,VALUE ,PROVIDER_ID) values
-(100, 'Placa Mãe', 'Qualquer Coisa', 'Computador', 5, 25, 101),
-(200, 'Processador', 'Outra Coisa', 'Notebook', 2, 2000, 102),
-(300, 'Memória', 'Teste', 'Monitor', 2, 200, 102);
+insert into PRODUCT (ID ,CATEGORY_ID ,DESCRIPTION ,NAME ,QUANTITY ,VALUE ,PROVIDER_ID) values
+(100, 101, 'Qualquer Coisa', 'Computador', 5, 25, 101),
+(200, 102, 'Outra Coisa', 'Notebook', 2, 2000, 102),
+(300, 105, 'Teste', 'Monitor', 2, 200, 102);
 
 -- ORDER
