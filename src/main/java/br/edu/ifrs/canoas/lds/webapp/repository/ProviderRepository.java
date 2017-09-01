@@ -4,9 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.edu.ifrs.canoas.lds.webapp.domain.Provider;
+import br.edu.ifrs.canoas.lds.webapp.domain.Role;
 
 /*
- *  Create by Edward Ramos Aug/11/2017
+ *  Create by Elvis Sept/01/2017
  *  
  */
 @Repository

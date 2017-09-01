@@ -7,6 +7,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -19,55 +20,40 @@ import java.util.List;
 @Entity
 public class Client {
 
+	//TODO RNG002 - Informações do Cliente
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String name;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String lastName;
-	@NotNull @Email
+	@NotNull(message="field.required") @NotEmpty(message="field.empty") @Email(message="error.email")
 	private String email;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String phone;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String cpf;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String street;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private Long streetNumber;
 	
 	private String complements;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String neighborhood;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String city;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String state;
-	@NotNull
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String zipcode;
 
 	@OneToMany
 	private List<Purchase> purchases;
 
 	public Client(){}
-	public Client(Long id, String name, String lastName, String email, String phone, String cpf, String street,
-			Long streetNumber, String complements, String neighborhood, String city, String state, String zipcode) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.phone = phone;
-		this.cpf = cpf;
-		this.street = street;
-		this.streetNumber = streetNumber;
-		this.complements = complements;
-		this.neighborhood = neighborhood;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
-	}
+
 	public Long getId() {
 		return id;
 	}
