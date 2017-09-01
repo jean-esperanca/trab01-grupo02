@@ -1,8 +1,10 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-
+import br.edu.ifrs.canoas.lds.webapp.domain.Role;
 import br.edu.ifrs.canoas.lds.webapp.domain.User;
 import br.edu.ifrs.canoas.lds.webapp.repository.RoleRepository;
 import br.edu.ifrs.canoas.lds.webapp.repository.UserRepository;
@@ -43,7 +45,7 @@ public class UserService {
 		return userRepository.getOne(id);
 	}
 
-	public Object getRoles() {
+	public List<Role> getRoles() {
 		
 		return roleRepository.findAll();
 	}
