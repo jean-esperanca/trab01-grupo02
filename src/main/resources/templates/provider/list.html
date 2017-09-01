@@ -1,5 +1,114 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layouts/main}">
+<!-- CONTENT HEADER -->
+<div layout:fragment="content-header">
+	<section class="content-header">
+		<!-- PAGE TITLE -->
+		<h1>
+			<span th:text="#{provider.title}" />
+		</h1>
+		<!-- BREADCRUMB -->
+		<ol class="breadcrumb">
+			<li><a href="#"> <i class="fa fa-dashboard"></i> <span
+					th:text="#{breadcrumb}" />
+			</a></li>
+			<li><a href="#"><span th:text="#{provider.title}" /></a></li>
+		</ol>
+	</section>
+</div>
 
+<div layout:fragment="content-header">
+	<section class="content-header">
+		<!-- PAGE TITLE -->
+		<h1>
+			<span th:text="#{provider.title}" />
+		</h1>
 
+	</section>
+</div>
+
+<!-- CONTENT MAIN -->
+<div layout:fragment="content">
+	<section class="content">
+		<div class="box-body">
+			<div id="example1_wrapper"
+				class="dataTables_wrapper form-inline dt-bootstrap">
+				<div class="row">
+					<div class="col-sm-12">
+						<table id="tabela_provider"
+							class="table table-bordered table-striped dataTable" role="grid"
+							aria-describedby="example1_info">
+							<thead>
+								<tr role="row">
+									<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{provider.name}"></span>
+									</th>
+
+									<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{provider.cnpj}"></span>
+									</th>
+
+									<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{provider.email}"></span>
+									</th>
+
+									<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span th:text="#{provider.phone}"></span>
+									</th>
+									<th class="sorting" tabindex="0" aria-controls="example1"
+										rowspan="1" colspan="1"
+										aria-label="Rendering engine: activate to sort column ascending"
+										style="width: 197px;"><span></span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr role="row" class="odd" th:each="provider : ${providers}">
+									<td><a href="#"
+										th:href="@{|/provider/view/${provider.id}|}"
+										th:text="|${provider.name}|" /></td>
+									<td><a href="#"
+										th:href="@{|/provider/view/${provider.id}|}"
+										th:text="|${provider.cnpj}|" /></td>
+									<td><a href="#"
+										th:href="@{|/provider/view/${provider.id}|}"
+										th:text="|${provider.email}|" /></td>
+									<td><a href="#"
+										th:href="@{|/provider/view/${provider.id}|}"
+										th:text="|${provider.phone}|" /></td>
+									<td><a th:href="@{/provider/edit/}+${provider.id}"> <span
+											class="badge" th:text="#{edit}" />
+									</a> <a th:href="@{/provider/delete/}+${provider.id}"
+										class="delete"> <span class="badge" th:text="#{delete}" />
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<th:block layout:fragment="css-view">
+	<link rel="stylesheet" type="text/css"
+		href="/webjars/datatables/1.10.13/media/css/jquery.dataTables.min.css" />
+</th:block>
+
+<th:block layout:fragment="js-view">
+	<script
+		src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#tabela_provider').DataTable();
+		});
+	</script>
+</th:block>
 </html>
