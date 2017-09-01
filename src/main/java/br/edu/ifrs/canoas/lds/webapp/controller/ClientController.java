@@ -70,9 +70,13 @@ public class ClientController {
 	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
 		ModelAndView mav = new ModelAndView("redirect:/client/list");
-		clientService.delete(id);
 		
-		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		if(clientService.delete(id)==false){
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+		}else{
+			redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		}
+		
 		return mav;
 	}
 	
@@ -82,6 +86,7 @@ public class ClientController {
 		
 		if (bindingResult.hasErrors()) {
             return new ModelAndView("/client/form");
+            
         }
 		
 		ModelAndView mav = new ModelAndView("redirect:/client/list");
