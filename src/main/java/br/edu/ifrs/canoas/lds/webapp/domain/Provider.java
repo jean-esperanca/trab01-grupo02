@@ -7,6 +7,7 @@ import javax.persistence.Id;
 /**
  * "Fornecedor" in portuguese
  * Created by Edward Ramos Aug/11/2017.
+ * Changed by Jean Esperança Set/01/2017.
  */
 @Entity
 public class Provider {
@@ -18,13 +19,9 @@ public class Provider {
 	private String cnpj;
 	private String email;
 	private String phone;
-	
-	
-	
+		
 	public Provider(){}
 
-	
-	
 	public Long getId() {
 		return id;
 	}

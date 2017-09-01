@@ -8,9 +8,9 @@ import br.edu.ifrs.canoas.lds.webapp.domain.Role;
 
 /*
  *  Create by Elvis Sept/01/2017
- *  
+ *  Changed by Jean Esperança Set/01/2017
  */
 @Repository
-public interface ProviderRepository extends JpaRepository<Provider, Long>{
+public interface ProviderRepository extends JpaRepository<Provider, Long> {
 
 }

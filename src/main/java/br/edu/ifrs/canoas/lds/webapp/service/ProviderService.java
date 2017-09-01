@@ -18,8 +18,32 @@ public class ProviderService {
 	public ProviderService(ProviderRepository providerRepository) {
 		this.providerRepository = providerRepository;
 	}
-	
-	public Iterable<Provider> list(){
+
+	public Iterable<Provider> list() {
 		return providerRepository.findAll();
+	}
+
+	public Provider save(Provider provider) {
+
+		return providerRepository.save(provider);
+	}
+
+	public Provider getOne(Provider provider) {
+		return providerRepository.findById(provider.getId()).get();
+	}
+
+	// TODO RNG004 - ID Não Encontrado
+	public boolean delete(Long id) {
+		try {
+			providerRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
+	public Provider getId(Long id) {
+		return providerRepository.getOne(id);
 	}
 }

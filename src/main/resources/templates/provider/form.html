@@ -1,4 +1,68 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layouts/main}">
+<div layout:fragment="content">
+	<form id="form_1099345" class="appnitro" method="post"
+		th:action="@{/provider/save}" th:object="${provider}">
+		<div class="form_description">
+			<h2 th:if="${isEdit}" th:text="#{provider.edit}"></h2>
+			<h2 th:if="${isView}" th:text="#{provider.view}"></h2>
+			<h2 th:if="${isCreate}" th:text="#{provider.create}"></h2>
+		</div>
+		<ul>
+			<!-- Id hidden -->
+			<input type="hidden" id="ProviderId" th:field="*{id}" />
 
+			<!-- Name -->
+			<li id="li_1"><label class="description" for="element_1"
+				th:text="#{provider.name}"> </label>
+				<div th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+					<input id="ProviderName" name="element_1" class="element text medium"
+						type="text" maxlength="255" th:readonly="${isView}"
+						th:field="${provider.name}" /> <span
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+						th:class="help-block" />
+				</div></li>
+
+			<!-- CNPJ -->
+			<li id="li_1"><label class="description" for="element_1"
+				th:text="#{provider.cnpj}"> </label>
+				<div th:classappend="${#fields.hasErrors('cnpj')}? 'has-error'">
+					<input id="ProviderCnpj" name="element_1" class="element text medium"
+						type="text" maxlength="255" th:readonly="${isView}"
+						th:field="${provider.cnpj}" /> <span
+						th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"
+						th:class="help-block" />
+				</div></li>
+			
+			<!-- Phone -->
+			<li id="li_1"><label class="description" for="element_1"
+				th:text="#{provider.phone}"> </label>
+				<div th:classappend="${#fields.hasErrors('phone')}? 'has-error'">
+					<input id="ProviderPhone" name="element_1"
+						class="element text medium" type="text" maxlength="255"
+						th:readonly="${isView}" th:field="${provider.phone}" /> <span
+						th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+						th:class="help-block" />
+				</div></li>
+
+			<!-- Email -->
+			<li id="li_1"><label class="description" for="element_2"
+				th:text="#{provider.email}"> </label>
+				<div th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+					<input id="ProviderEmail" name="element_2"
+						class="element text medium" type="text" maxlength="255"
+						th:readonly="${isView}" th:field="${provider.email}" /> <span
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						th:class="help-block" />
+				</div></li>
+
+			<!-- Submit -->
+			<li class="buttons"><input type="hidden" name="form_id" /> <input
+				th:if="${isCreate}" id="saveForm" class="button_text" type="submit"
+				name="submit" th:value="#{provider.submit}" /> <input
+				th:if="${isEdit}" id="saveForm" class="button_text" type="submit"
+				name="submit" th:value="#{edit}" /></li>
+		</ul>
+	</form>
+</div>
 </html>

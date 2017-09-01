@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
-import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+import br.edu.ifrs.canoas.lds.webapp.domain.Provider;
 import br.edu.ifrs.canoas.lds.webapp.service.ProviderService;
 
 /*
@@ -42,20 +42,20 @@ public class ProviderController {
 		return mav;
 	}
 	
-	/*@GetMapping("/view/{id}")
+	@GetMapping("/view/{id}")
 	public ModelAndView view(@PathVariable Long id){
 		ModelAndView mav = new ModelAndView("/provider/form");
 		
 		mav.addObject("provider", providerService.getId(id));
 		mav.addObject("isView", true); //true = No editable fields
 		return mav;
-	}*/
+	}
 	
-	/*@GetMapping("/create")
+	@GetMapping("/create")
 	public ModelAndView create(){
 		ModelAndView mav = new ModelAndView("/provider/form");
 		
-		mav.addObject("provider", new Client());
+		mav.addObject("provider", new Provider());
 		mav.addObject("isCreate", true); //false = editable fields
 		return mav;
 	}
@@ -91,6 +91,6 @@ public class ProviderController {
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 		
 		return mav;
-	}*/
+	}
 	
 }
