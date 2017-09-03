@@ -1,89 +1,105 @@
-<!DOCTYPE html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{/layouts/main}">
-<div layout:fragment="content">
-    <form id="form_1099345" class="appnitro" method="post" th:action="@{/purchase/save}"
-          th:object="${purchase}">
-        <div class="container-fluid">
-            <div class="row form-control">
-                <div class="col-md-2">
-                    <label for="n_order">Order nº: </label>
-                    <input id="n_order" type="number" disabled th:value="1287261"/>
-                </div>
-                <div class="col-md-8">
-                </div>
-                <div class="col-md-2">
-                    <label for="open_date">Open date: </label>
-                    <input id="open_date" type="date" disabled
-                           th:value="${#dates.format(#dates.createNow(), 'dd/mm/yyyy')}"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table id="products" class="table table-bordered table-striped dataTable" role="grid"
-                           aria-describedby="products_info">
-                        <thead>
-                        <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="products" rowspan="1"
-                                colspan="1" aria-sort="ascending"
-                                aria-label="Name: activate to sort column descending"
-                                style="width: 181px;">Name
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
-                                aria-label="Description: activate to sort column ascending" style="width: 222px;">
-                                Description
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
-                                aria-label="Category: activate to sort column ascending"
-                                style="width: 198px;">Category
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
-                                aria-label="Value: activate to sort column ascending"
-                                style="width: 154px;">Value
-                            </th>
-                            <th class="sorting" tabindex="0" aria-controls="products" rowspan="1" colspan="1"
-                                aria-label="Quantity: activate to sort column ascending" style="width: 112px;">
-                                Quantity
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="odd">
-                            <td valign="top" colspan="5" class="dataTables_empty">No matching records found</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <th rowspan="1" colspan="1">Name</th>
-                            <th rowspan="1" colspan="1">Description</th>
-                            <th rowspan="1" colspan="1">Category</th>
-                            <th rowspan="1" colspan="1">Value</th>
-                            <th rowspan="1" colspan="1">Quantity</th>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-warning">
-                        Dismiss purchase
-                    </button>
-                </div>
-                <div class="col-md-2">
+<html layout:decorate="~{/layouts/main}" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 
-                    <button type="button" class="btn btn-primary">
-                        Save
-                    </button>
-                </div>
-            </div>
-        </div>
-    </form>
+<head>
+    <title th:text="#{purchase.title}"/>
+</head>
+
+<!-- CONTENT HEADER -->
+<div layout:fragment="content-header">
+    <section class="content-header">
+        <!-- PAGE TITLE -->
+        <h1>
+            <span th:text="#{purchase.title}"/>
+        </h1>
+        <!-- BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li><a href="#"> <i class="fa fa-dashboard"></i> <span
+                    th:text="#{breadcrumb}"/>
+            </a></li>
+            <li><a href="#"><span th:text="#{purchase.title}"/></a></li>
+        </ol>
+    </section>
 </div>
+<!-- CONTENT -->
+<div layout:fragment="content">
+    <section class="content">
+        <div class="row">
+            <!-- right column -->
+            <div class="col-md-6">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            <span th:if="${isEdit}" th:text="#{purchase.edit}"></span> <span
+                                th:if="${isView}" th:text="#{purchase.view}"></span> <span
+                                th:if="${isCreate}" th:text="#{purchase.new}"></span>
+                        </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" method="post"
+                          th:action="@{/purchase/save}" th:object="${purchase}">
+                        <div class="box-body">
+                            <input type="hidden" id="purchaseId" th:field="*{id}"/>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-dollar"></i>
+                                    <span th:text="#{purchase.price}"></span>
+                                </div>
+                                <input type="text" class="form-control" id="inputName"
+                                       placeholder="Name" th:readonly="${isView}"
+                                       th:field="${purchase.price}"/>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    <span th:text="#{purchase.date}"></span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       id="inputDate"
+                                       placeholder="Date" th:readonly="${isView}"
+                                       th:field="${purchase.purchaseDate}"
+                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-default">
+                                <span th:text="#{purchase.cancel}"/>
+                            </button>
+                            <button th:if="${isCreate}" type="submit" class="btn btn-info pull-right">
+                                <span th:text="#{purchase.submit}"/>
+                            </button>
+                            <button th:if="${isEdit}" type="submit" class="btn btn-info pull-right">
+                                <span th:text="#{purchase.edit}"/>
+                            </button>
+                        </div>
+                        <!-- /.box-footer -->
+                    </form>
+                </div>
+                <!-- /.box -->
+                <!-- general form elements disabled -->
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+        <div></div>
+    </section>
+</div>
+<th:block layout:fragment="css-view">
+    <link rel="stylesheet"
+          type="text/css" href="/webjars/datatables/1.10.13/media/css/jquery.dataTables.min.css"/>
+</th:block>
+<th:block layout:fragment="js-view">
+    <script
+            src="/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example1').DataTable();
+        });
+    </script>
+</th:block>
 </html>

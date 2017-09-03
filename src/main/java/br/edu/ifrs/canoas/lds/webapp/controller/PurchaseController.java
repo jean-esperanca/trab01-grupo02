@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /*
@@ -46,15 +50,25 @@ public class PurchaseController {
 
 		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("readOnly", true); //true = No editable fields
+		mav.addObject("isView", true);
 		return mav;
 	}
 
 	@GetMapping("/create")
 	public ModelAndView create(){
+
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date today = Calendar.getInstance().getTime();
+		String date = df.format(today);
+
+
+
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
 		mav.addObject("purchase", new Purchase());
 		mav.addObject("readOnly", false); //false = editable fields
+		mav.addObject("isCreate", true);
+		mav.addObject("nowDate", date.toString());
 		return mav;
 	}
 
@@ -64,6 +78,7 @@ public class PurchaseController {
 
 		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("readOnly", false); //false = editable fields
+		mav.addObject("isEdit", true);
 		return mav;
 	}
 

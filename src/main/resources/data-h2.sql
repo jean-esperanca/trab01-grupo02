@@ -43,4 +43,9 @@ insert into PRODUCT (ID ,CATEGORY_ID ,DESCRIPTION ,NAME ,QUANTITY ,VALUE ,PROVID
 (200, 102, 'Outra Coisa', 'Notebook', 2, 2000, 102),
 (300, 105, 'Teste', 'Monitor', 2, 200, 102);
 
--- ORDER
+--PURCHASE
+insert into PURCHASE (ID ,PRICE,PURCHASE_DATE, CLIENT_ID)
+ values
+(100,1.99,PARSEDATETIME('28/02/17','dd/MM/yy') , 101),
+(200,500.90,PARSEDATETIME('01/04/17','dd/MM/yy') , 101),
+(300,1000,current_date() , 103);
