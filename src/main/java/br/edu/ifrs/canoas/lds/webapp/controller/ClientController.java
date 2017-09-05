@@ -34,6 +34,7 @@ public class ClientController {
 	
 	@GetMapping("/list")
 	public ModelAndView list(){
+		//TODO RNG003 - Buscar Cliente
 		ModelAndView mav = new ModelAndView("/client/list");
 		mav.addObject("clients", clientService.list());
 		
@@ -85,7 +86,9 @@ public class ClientController {
             RedirectAttributes redirectAttr, Locale locale){
 		
 		if (bindingResult.hasErrors()) {
-            return new ModelAndView("/client/form");
+			ModelAndView mav = new ModelAndView("/client/form");
+			mav.addObject("isCreate", true);
+            return mav;
             
         }
 		

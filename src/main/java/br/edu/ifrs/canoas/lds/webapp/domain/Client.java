@@ -1,5 +1,6 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,11 +33,11 @@ public class Client {
 	private String email;
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String phone;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="field.required") @NotEmpty(message="field.empty") @Column(unique=true)
 	private String cpf;
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String street;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="field.required") 
 	private Long streetNumber;
 	
 	private String complements;
