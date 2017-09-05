@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.List;
@@ -37,9 +38,9 @@ public class Client {
 	private String cpf;
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String street;
-	@NotNull(message="field.required") 
+	@NotNull(message="field.required") @NotBlank(message="field.empty")
 	private Long streetNumber;
-	
+	@NotNull(message="field.required") 
 	private String complements;
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String neighborhood;
