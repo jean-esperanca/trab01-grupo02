@@ -43,10 +43,9 @@ public class ClientController {
 	
 	@GetMapping("/view/{id}")
 	public ModelAndView view(@PathVariable Long id, RedirectAttributes redirectAttr){
-		ModelAndView mav = new ModelAndView("/client/form");
 		
 		if(clientService.isExist(id)==true){
-			
+			ModelAndView mav = new ModelAndView("/client/form");
 			mav.addObject("client", clientService.getId(id));
 			mav.addObject("isView", true); //true = No editable fields
 			return mav;
@@ -56,7 +55,6 @@ public class ClientController {
 			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
 			return mav2;
 		}
-		
 		
 	}
 	
@@ -70,12 +68,20 @@ public class ClientController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public ModelAndView edit(@PathVariable("id") Long id){
-		ModelAndView mav = new ModelAndView("/client/form");
+	public ModelAndView edit(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
 		
-		mav.addObject("client", clientService.getId(id));
-		mav.addObject("isEdit", true); //false = editable fields
-		return mav;
+		
+		if(clientService.isExist(id)==true){
+			ModelAndView mav = new ModelAndView("/client/form");
+			mav.addObject("client", clientService.getId(id));
+			mav.addObject("isEdit", true); //false = editable fields
+			return mav;
+		}else{
+			ModelAndView mav2 = new ModelAndView("redirect:/client/list");
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			return mav2;
+		}
+		
 	}
 	
 	@GetMapping("/delete/{id}")
