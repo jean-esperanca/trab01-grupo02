@@ -18,10 +18,23 @@ insert into user_roles (user_id, roles_id) values
 (200, 200);
 
 -- CLIENTS
-insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF ,STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE  ) values
-(101, 'Joao', 'Silva', 'joao.silva@email.com.br', '51-98765-4321', '012.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000'),
-(102, 'Maria', 'Silva', 'maria.silva@email.com.br', '51-98765-4321', '102.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000'),
-(103, 'Pedro', 'Silva', 'pedro.silva@email.com.br', '51-98765-4321', '002.345.678-90', 'Rua A', 12, 'Casa', 'Centro', 'Santa Maria', 'RS', '92000-000');
+insert into CLIENT (ID ,NAME, LAST_NAME ,EMAIL ,PHONE ,CPF, STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE ) values
+(101, 'Joao', 'Silva', 'joao.silva@email.com.br', '51-98765-4321', '012.345.678-90', 'Rua A', 10, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000'),
+(102, 'Maria', 'Silva', 'maria.silva@email.com.br', '51-98765-4321', '102.345.678-90', 'Rua A', 10, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000'),
+(103, 'Pedro', 'Silva', 'pedro.silva@email.com.br', '51-98765-4321', '002.345.678-90', 'Rua A', 10, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000');
+
+-- ADRESS
+insert into ADRESS (ID ,STREET ,STREET_NUMBER ,COMPLEMENTS ,NEIGHBORHOOD ,CITY ,STATE ,ZIPCODE  ) values
+(100, 'Rua A', 10, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000'),
+(101, 'Rua A', 20, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000'),
+(102, 'Rua A', 30, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000'),
+(103, 'Rua A', 40, 'Casa', 'Igara', 'Canoas', 'RS', '92000-000');
+
+-- ADRESS_CLIENTS
+insert into ADRESS_CLIENTS (CLIENTS_ID ,ADRESS_ID ) values
+(101,100),
+(102,100),
+(103,101);
 
 -- PROVIDER
 insert into PROVIDER (ID, CNPJ , EMAIL, NAME, PHONE) values 

@@ -1,8 +1,11 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -13,7 +16,7 @@ public class Adress {
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String street;
 	@NotNull(message="field.required") @NotBlank(message="field.empty") 
@@ -29,13 +32,16 @@ public class Adress {
 	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String zipcode;
 	
+	@OneToMany
+	private List<Client> clients;
+	
 	public Adress(){}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

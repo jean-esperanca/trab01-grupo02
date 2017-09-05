@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.lds.webapp.controller;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
 import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+import br.edu.ifrs.canoas.lds.webapp.service.AdressService;
 import br.edu.ifrs.canoas.lds.webapp.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,10 +27,12 @@ public class ClientController {
 
 	private final Messages messages;
 	private final ClientService clientService;
+	private final AdressService adressService;
 	
-	public ClientController(Messages messages, ClientService clientService) {
+	public ClientController(Messages messages, ClientService clientService, AdressService adressService) {
 		this.messages = messages;
 		this.clientService = clientService;
+		this.adressService = adressService;
 	}
 	
 	@GetMapping("/list")
