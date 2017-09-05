@@ -42,12 +42,22 @@ public class ClientController {
 	}
 	
 	@GetMapping("/view/{id}")
-	public ModelAndView view(@PathVariable Long id){
+	public ModelAndView view(@PathVariable Long id, RedirectAttributes redirectAttr){
 		ModelAndView mav = new ModelAndView("/client/form");
 		
-		mav.addObject("client", clientService.getId(id));
-		mav.addObject("isView", true); //true = No editable fields
-		return mav;
+		if(clientService.isExist(id)==true){
+			
+			mav.addObject("client", clientService.getId(id));
+			mav.addObject("isView", true); //true = No editable fields
+			return mav;
+			
+		}else{
+			ModelAndView mav2 = new ModelAndView("redirect:/client/list");
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			return mav2;
+		}
+		
+		
 	}
 	
 	@GetMapping("/create")

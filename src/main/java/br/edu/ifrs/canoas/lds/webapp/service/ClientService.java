@@ -45,4 +45,8 @@ public class ClientService {
 	public Iterable<Client> list(){
 		return clientRepository.findAll();
 	}
+	
+	public boolean isExist(Long id){
+		return clientRepository.existsById(id);
+	}
 }
