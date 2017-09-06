@@ -66,7 +66,7 @@
                             <br>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-address-book"></i>
+                                    <i class="fa fa-user"></i>
                                     <span th:text="#{purchase.client}"></span>
                                 </div>
                                 <select th:field="*{client}" type="text"
@@ -77,19 +77,19 @@
                                 </select>
                             </div>
                             <br>
-                            <!--div class="input-group">
+                            <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-package"></i>
                                     <span th:text="#{purchase.products}"></span>
                                 </div>
-                                <select th:field="*{product}" type="text"
+                                <select th:field="*{products}" type="text"
                                         class="form-control" id="inputProducts" placeholder="Product"
-                                        th:readonly="${isView}">
+                                        th:readonly="${isView}" multiple>
                                     <option th:each="product: ${products}"
                                             th:value="${product.id}" th:text="${product.name}"></option>
                                 </select>
 
-                            </div-->
+                            </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
