@@ -48,31 +48,9 @@ public class PurchaseController {
 	public ModelAndView view(@PathVariable Long id){
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
-		List<Client> clients = new ArrayList();
-		clients.add(purchaseService.getId(id).getClient());
-		for(Client client :purchaseService.listClients()){
-			if(client.getId() != purchaseService.getId(id).getClient().getId()){
-				clients.add(client);
-			}
-		}
-
-		List<Product> products = new ArrayList();
-		products.addAll(purchaseService.getId(id).getProducts());
-		for(Product product :purchaseService.listProducts()){
-			Boolean productIn = false;
-			for(Product orderProduct : products){
-				if(orderProduct.getId() == product.getId()){
-					productIn = true;
-				}
-			}
-			if(!productIn)
-				products.add(product);
-		}
-
-
 		mav.addObject("purchase", purchaseService.getId(id));
-		mav.addObject("clients", clients);
-		mav.addObject("products", products);
+		mav.addObject("clients", purchaseService.listClients());
+		mav.addObject("products", purchaseService.listProducts());
 		mav.addObject("readOnly", true); //true = No editable fields
 		mav.addObject("isView", true);
 		return mav;
@@ -102,6 +80,8 @@ public class PurchaseController {
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
 		mav.addObject("purchase", purchaseService.getId(id));
+		mav.addObject("clients", purchaseService.listClients());
+		mav.addObject("products", purchaseService.listProducts());
 		mav.addObject("readOnly", false); //false = editable fields
 		mav.addObject("isEdit", true);
 		return mav;
@@ -126,6 +106,8 @@ public class PurchaseController {
 
 		ModelAndView mav = new ModelAndView("redirect:/purchase/list");
 		mav.addObject("purchase", purchaseService.save(purchase));
+		mav.addObject("clients", purchaseService.listClients());
+		mav.addObject("products", purchaseService.listProducts());
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 
 		return mav;
