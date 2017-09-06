@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 /**
  * "Fornecedor" in portuguese
@@ -17,17 +18,18 @@ import org.hibernate.validator.constraints.br.CPF;
  */
 @Entity
 public class Provider {
-
+	
+	//TODO RGN006 - Informações do Fornecedor
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String name;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty") @CPF(message="error.cnpj") @Column(unique=true)
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @CNPJ(message="{error.cnpj}") @Column(unique=true)
 	private String cnpj;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty") @Email(message="error.email")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Email(message="{error.email}")
 	private String email;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Size(min=13, max=14, message="{error.size}")
 	private String phone;
 		
 	public Provider(){}

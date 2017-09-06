@@ -37,7 +37,7 @@ public class Client {
 	private String lastName;
 	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Email(message="{error.email}")
 	private String email;
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Size(min=13, max=14)
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Size(min=13, max=14, message="{error.size}")
 	private String phone;
 	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @CPF(message="{error.cpf}") @Column(unique=true)
 	private String cpf;
