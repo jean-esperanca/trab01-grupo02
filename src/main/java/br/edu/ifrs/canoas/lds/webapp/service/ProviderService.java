@@ -46,4 +46,9 @@ public class ProviderService {
 	public Provider getId(Long id) {
 		return providerRepository.getOne(id);
 	}
+
+	public boolean isExist(Long id) {
+		// TODO Auto-generated method stub
+		return providerRepository.existsById(id);
+	}
 }

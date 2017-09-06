@@ -28,69 +28,81 @@ public class ProviderController {
 
 	private final Messages messages;
 	private final ProviderService providerService;
-	
+
 	public ProviderController(Messages messages, ProviderService providerService) {
 		this.messages = messages;
 		this.providerService = providerService;
 	}
-	
+
 	@GetMapping("/list")
-	public ModelAndView list(){
+	public ModelAndView list() {
+		// TODO RGN007 - Buscar Fornecedor
 		ModelAndView mav = new ModelAndView("/provider/list");
 		mav.addObject("providers", providerService.list());
-		
 		return mav;
 	}
-	
+
 	@GetMapping("/view/{id}")
-	public ModelAndView view(@PathVariable Long id){
-		ModelAndView mav = new ModelAndView("/provider/form");
-		
-		mav.addObject("provider", providerService.getId(id));
-		mav.addObject("isView", true); //true = No editable fields
-		return mav;
+	public ModelAndView view(@PathVariable Long id, RedirectAttributes redirectAttr) {
+		if (providerService.isExist(id) == true) {
+			ModelAndView mav = new ModelAndView("/provider/form");
+			mav.addObject("provider", providerService.getId(id));
+			mav.addObject("isView", true); // true = No editable fields
+			return mav;
+		} else {
+			ModelAndView mav2 = new ModelAndView("redirect:/provider/list");
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			return mav2;
+		}
 	}
-	
+
 	@GetMapping("/create")
-	public ModelAndView create(){
+	public ModelAndView create() {
 		ModelAndView mav = new ModelAndView("/provider/form");
-		
 		mav.addObject("provider", new Provider());
-		mav.addObject("isCreate", true); //false = editable fields
+		mav.addObject("isCreate", true); // false = editable fields
 		return mav;
 	}
-	
+
 	@GetMapping("/edit/{id}")
-	public ModelAndView edit(@PathVariable("id") Long id){
-		ModelAndView mav = new ModelAndView("/provider/form");
-		
-		mav.addObject("provider", providerService.getId(id));
-		mav.addObject("isEdit", true); //false = editable fields
-		return mav;
+	public ModelAndView edit(@PathVariable("id") Long id, RedirectAttributes redirectAttr) {
+		if (providerService.isExist(id) == true) {
+			ModelAndView mav = new ModelAndView("/provider/form");
+			mav.addObject("provider", providerService.getId(id));
+			mav.addObject("isEdit", true); // false = editable fields
+			return mav;
+		} else {
+			ModelAndView mav2 = new ModelAndView("redirect:/provider/list");
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			return mav2;
+		}
 	}
-	
+
 	@GetMapping("/delete/{id}")
-	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
+	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr) {
 		ModelAndView mav = new ModelAndView("redirect:/provider/list");
-		providerService.delete(id);
-		
-		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		if(providerService.delete(id)==false){
+			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+		}else{
+			//providerService.delete(id);
+			redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		}
 		return mav;
 	}
-	
+
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Provider provider, BindingResult bindingResult, 
-            RedirectAttributes redirectAttr, Locale locale){
-		
+	public ModelAndView save(@Valid Provider provider, BindingResult bindingResult, RedirectAttributes redirectAttr,
+			Locale locale) {
+
 		if (bindingResult.hasErrors()) {
-            return new ModelAndView("/provider/form");
-        }
-		
+			return new ModelAndView("/provider/form");
+		}
+
 		ModelAndView mav = new ModelAndView("redirect:/provider/list");
 		mav.addObject("provider", providerService.save(provider));
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
-		
+
 		return mav;
 	}
-	
+
 }
