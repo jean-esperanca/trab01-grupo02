@@ -28,29 +28,29 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String name;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String lastName;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty") @Email(message="error.email")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Email(message="error.email")
 	private String email;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String phone;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty") @CPF(message="error.cpf") @Column(unique=true)
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @CPF(message="error.cpf") @Column(unique=true)
 	private String cpf;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String street;
-	@NotNull(message="field.required") @NotBlank(message="field.empty") 
+	@NotNull(message="{field.required}")  
 	private Long streetNumber;
-	@NotNull(message="field.required")
+	@NotNull(message="{field.required}")
 	private String complements;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String neighborhood;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String city;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String state;
-	@NotNull(message="field.required") @NotEmpty(message="field.empty")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String zipcode;
 	@ManyToOne
 	private Adress adress;
