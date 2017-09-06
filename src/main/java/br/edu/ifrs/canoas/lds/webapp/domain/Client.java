@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -32,15 +35,15 @@ public class Client {
 	private String name;
 	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String lastName;
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Email(message="error.email")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Email(message="{error.email}")
 	private String email;
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @Size(min=13, max=14)
 	private String phone;
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @CPF(message="error.cpf") @Column(unique=true)
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}") @CPF(message="{error.cpf}") @Column(unique=true)
 	private String cpf;
 	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String street;
-	@NotNull(message="{field.required}")  
+	@NotNull(message="{field.required}") @Min(1) 
 	private Long streetNumber;
 	@NotNull(message="{field.required}")
 	private String complements;
