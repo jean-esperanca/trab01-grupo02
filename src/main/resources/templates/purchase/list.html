@@ -88,9 +88,7 @@
                                        th:href="@{|/purchase/view/${purchase.id}|}"
                                        th:text="|${purchase.purchaseDate}|"></td>
                                 <td><a th:href="@{/purchase/edit/}+${purchase.id}"> <span
-                                        class="badge" th:text="#{edit}"/>
-                                </a> <a th:href="@{/purchase/delete/}+${purchase.id}" class="delete">
-                                    <span class="badge" th:text="#{delete}"/>
+                                        class="badge" th:text="#{edit}"/>   
                                 </a></td>
 
                             </tr>
