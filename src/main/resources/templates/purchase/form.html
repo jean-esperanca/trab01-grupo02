@@ -48,7 +48,7 @@
                                     <span th:text="#{purchase.price}"></span>
                                 </div>
                                 <input type="text" class="form-control" id="inputName"
-                                       placeholder="Name" th:readonly="${isView}"
+                                       placeholder="Name" th:disabled="${isView}"
                                        th:field="${purchase.price}"/>
                             </div>
                             <br>
@@ -59,7 +59,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        id="inputDate"
-                                       placeholder="Date" th:readonly="${isView}"
+                                       placeholder="Date" th:disabled="${isView}"
                                        th:field="${purchase.purchaseDate}"
                                        data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
                             </div>
@@ -71,7 +71,7 @@
                                 </div>
                                 <select th:field="*{client}" type="text"
                                         class="form-control" id="inputClient" placeholder="Client"
-                                        th:readonly="${isView}">
+                                        th:disabled="${isView}">
                                     <option th:each="client: ${clients}"
                                             th:value="${client.id}" th:text="${client.name}"></option>
                                 </select>
@@ -84,7 +84,7 @@
                                 </div>
                                 <select th:field="*{products}" type="text"
                                         class="form-control" id="inputProducts" placeholder="Product"
-                                        th:readonly="${isView}" multiple>
+                                        th:disabled="${isView}" multiple>
                                     <option th:each="product: ${products}"
                                             th:value="${product.id}" th:text="${product.name}"></option>
                                 </select>
