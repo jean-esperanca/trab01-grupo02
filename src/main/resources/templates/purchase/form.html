@@ -63,6 +63,22 @@
                                        th:field="${purchase.purchaseDate}"
                                        data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
                             </div>
+                            <div class="input-group">
+                                <table>
+                                    <th:block th:each="clients : ${client}">
+                                        <tr>
+                                            <td th:text="${client.id}">...</td>
+                                            <td th:text="${client.name}">...</td>
+                                            <td th:text="${client.lastName}">...</td>
+                                            <td th:text="${client.email}">...</td>
+                                            <td th:text="${client.zipcode}">...</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" th:text="${client.address}">...</td>
+                                        </tr>
+                                    </th:block>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">

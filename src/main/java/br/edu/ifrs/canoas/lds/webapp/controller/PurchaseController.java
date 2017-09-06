@@ -61,14 +61,15 @@ public class PurchaseController {
 		Date today = Calendar.getInstance().getTime();
 		String date = df.format(today);
 
-
-
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
 		mav.addObject("purchase", new Purchase());
+		mav.addObject("clients", purchaseService.listClients());
+		mav.addObject("products", purchaseService.listProducts());
+
 		mav.addObject("readOnly", false); //false = editable fields
 		mav.addObject("isCreate", true);
-		mav.addObject("nowDate", date.toString());
+		mav.addObject("nowDate", date);
 		return mav;
 	}
 

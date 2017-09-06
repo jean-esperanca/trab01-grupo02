@@ -13,6 +13,5 @@ import br.edu.ifrs.canoas.lds.webapp.domain.Client;
  */
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
-
 	Optional<Client> findByName(String name);
 }
