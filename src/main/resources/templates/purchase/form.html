@@ -63,22 +63,33 @@
                                        th:field="${purchase.purchaseDate}"
                                        data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
                             </div>
+                            <br>
                             <div class="input-group">
-                                <table>
-                                    <th:block th:each="clients : ${client}">
-                                        <tr>
-                                            <td th:text="${client.id}">...</td>
-                                            <td th:text="${client.name}">...</td>
-                                            <td th:text="${client.lastName}">...</td>
-                                            <td th:text="${client.email}">...</td>
-                                            <td th:text="${client.zipcode}">...</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" th:text="${client.address}">...</td>
-                                        </tr>
-                                    </th:block>
-                                </table>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-address-book"></i>
+                                    <span th:text="#{purchase.client}"></span>
+                                </div>
+                                <select th:field="*{client}" type="text"
+                                        class="form-control" id="inputClient" placeholder="Client"
+                                        th:readonly="${isView}">
+                                    <option th:each="client: ${clients}"
+                                            th:value="${client.id}" th:text="${client.name}"></option>
+                                </select>
                             </div>
+                            <br>
+                            <!--div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-shopping-bag"></i>
+                                    <span th:text="#{purchase.products}"></span>
+                                </div>
+                                <select th:field="*{product}" type="text"
+                                        class="form-control" id="inputProducts" placeholder="Product"
+                                        th:readonly="${isView}">
+                                    <option th:each="product: ${products}"
+                                            th:value="${product.id}" th:text="${product.name}"></option>
+                                </select>
+
+                            </div-->
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
