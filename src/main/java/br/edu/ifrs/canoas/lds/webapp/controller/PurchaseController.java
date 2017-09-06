@@ -39,7 +39,7 @@ public class PurchaseController {
 	@GetMapping("/list")
 	public ModelAndView list(){
 		ModelAndView mav = new ModelAndView("/purchase/list");
-		//mav.addObject("purchases", purchaseService.list());
+		mav.addObject("purchases", purchaseService.list());
 
 		return mav;
 	}
