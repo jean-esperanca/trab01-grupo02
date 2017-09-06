@@ -1,8 +1,14 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * "Fornecedor" in portuguese
@@ -15,9 +21,13 @@ public class Provider {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String name;
+	@NotNull(message="field.required") @NotEmpty(message="field.empty") @CPF(message="error.cnpj") @Column(unique=true)
 	private String cnpj;
+	@NotNull(message="field.required") @NotEmpty(message="field.empty") @Email(message="error.email")
 	private String email;
+	@NotNull(message="field.required") @NotEmpty(message="field.empty")
 	private String phone;
 		
 	public Provider(){}
