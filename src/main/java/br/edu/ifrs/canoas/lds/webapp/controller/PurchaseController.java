@@ -1,5 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
+import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,9 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -48,7 +48,31 @@ public class PurchaseController {
 	public ModelAndView view(@PathVariable Long id){
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
+		List<Client> clients = new ArrayList();
+		clients.add(purchaseService.getId(id).getClient());
+		for(Client client :purchaseService.listClients()){
+			if(client.getId() != purchaseService.getId(id).getClient().getId()){
+				clients.add(client);
+			}
+		}
+
+		List<Product> products = new ArrayList();
+		products.addAll(purchaseService.getId(id).getProducts());
+		for(Product product :purchaseService.listProducts()){
+			Boolean productIn = false;
+			for(Product orderProduct : products){
+				if(orderProduct.getId() == product.getId()){
+					productIn = true;
+				}
+			}
+			if(!productIn)
+				products.add(product);
+		}
+
+
 		mav.addObject("purchase", purchaseService.getId(id));
+		mav.addObject("clients", clients);
+		mav.addObject("products", products);
 		mav.addObject("readOnly", true); //true = No editable fields
 		mav.addObject("isView", true);
 		return mav;
