@@ -84,8 +84,13 @@ public class PurchaseController {
 		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("clients", purchaseService.listClients());
 		mav.addObject("products", purchaseService.listProducts());
-		mav.addObject("readOnly", false); //false = editable fields
-		mav.addObject("isEdit", true);
+		if(!purchaseService.getId(id).getPurchaseStatus().getDescription().toString().equals("EM ABERTO")){
+			mav.addObject("readOnly", false); //false = editable fields
+			mav.addObject("isEdit", true);
+		}else {
+			mav.addObject("readOnly", true); //false = editable fields
+			mav.addObject("isEdit", false);
+		}
 		return mav;
 	}
 

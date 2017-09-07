@@ -47,8 +47,8 @@
                                     <i class="fa fa-dollar"></i>
                                     <span th:text="#{purchase.price}"></span>
                                 </div>
-                                <input type="text" class="form-control" id="inputName"
-                                       placeholder="Name" th:disabled="${isView}"
+                                <input type="number" step=".01" class="form-control" id="inputName"
+                                       placeholder="R$" th:disabled="${isView}"
                                        th:field="${purchase.price}"/>
                             </div>
                             <br>
@@ -73,7 +73,7 @@
                                         class="form-control" id="inputClient" placeholder="Client"
                                         th:disabled="${isView}">
                                     <option th:each="client: ${clients}"
-                                            th:value="${client.id}" th:text="${client.name}"></option>
+                                            th:value="${client.id}" th:text="${client.name + ' ' + client.lastName}"></option>
                                 </select>
                             </div>
                             <br>
