@@ -69,6 +69,15 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1"
                                     rowspan="1" colspan="1"
                                     aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.completionDate}"></span></th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
+                                    style="width: 197px;"><span th:text="#{purchase.status}"></span></th>
+                                <th class="sorting" tabindex="0" aria-controls="example1"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Rendering engine: activate to sort column ascending"
                                     style="width: 197px;"><span th:text="#{purchase.actions}"></span></th>
 
                             </tr>
@@ -86,9 +95,15 @@
                                        th:text="|${purchase.price}|"/></td>
                                 <td><a href="#"
                                        th:href="@{|/purchase/view/${purchase.id}|}"
-                                       th:text="|${purchase.purchaseDate}|"></td>
+                                       th:text="|${purchase.purchaseDate}|"/></td>
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.completionDate}|"/></td>
+                                <td><a href="#"
+                                       th:href="@{|/purchase/view/${purchase.id}|}"
+                                       th:text="|${purchase.purchaseStatus.description}|"/></td>
                                 <td><a th:href="@{/purchase/edit/}+${purchase.id}"> <span
-                                        class="badge" th:text="#{edit}"/>   
+                                        class="badge" th:text="#{edit}"/>
                                 </a></td>
 
                             </tr>

@@ -68,7 +68,7 @@ insert into PURCHASE_STATUS (ID ,DESCRIPTION)
 insert into PURCHASE (ID ,PRICE,PURCHASE_DATE, CLIENT_ID, COMPLETION_DATE, PURCHASE_STATUS_ID)
  values
 (100, 1.99    , PARSEDATETIME('28/02/17','dd/MM/yy') , 101, NULL, 1),
-(200, 500.90  , PARSEDATETIME('01/04/17','dd/MM/yy') , 101, NULL, 2),
+(200, 500.90  , PARSEDATETIME('01/04/17','dd/MM/yy') , 101, current_date(), 2),
 (300, 1000.00 , current_date() , 103, NULL, 1);
 
 
