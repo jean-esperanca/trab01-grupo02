@@ -36,26 +36,17 @@ public class Purchase {
 	@Null
 	private Date completionDate;
 
-	public enum status {
-		EM_ANDAMENTO(1),CONCLUIDO(2),CANCELADO(3);
-
-		private final int key;
-
-		status(int status){
-			key = status;
-		}
-		public int getKey(){
-			return key;
-		}
-	}
+	private Status status;
 
 	public Purchase() {}
 
-	public Purchase(Client purchase, List<Product> products, double price, Date date) {
+	public Purchase(Client purchase, List<Product> products, double price, Date date, Date completionDate) {
 		this.client = purchase;
 		this.products = products;
 		this.price = price;
 		this.purchaseDate = date;
+		this.completionDate = completionDate;
+
 	}
 
 	public Long getId() {
