@@ -1,7 +1,5 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
-import br.edu.ifrs.canoas.lds.webapp.domain.Client;
-import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,9 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.sql.Date;
+import java.util.Locale;
+
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -59,13 +57,17 @@ public class PurchaseController {
 	@GetMapping("/create")
 	public ModelAndView create(){
 
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date today = Calendar.getInstance().getTime();
-		String date = df.format(today);
+		//DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		//Date today = Calendar.getInstance().getTime();
+		//String date = df.format(today);
+		Date date = new Date(new java.util.Date().getTime());
+
+		Purchase purchase = new Purchase();
+		purchase.setPurchaseDate(date);
 
 		ModelAndView mav = new ModelAndView("/purchase/form");
 
-		mav.addObject("purchase", new Purchase());
+		mav.addObject("purchase", purchase);
 		mav.addObject("clients", purchaseService.listClients());
 		mav.addObject("products", purchaseService.listProducts());
 

@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,12 +19,17 @@ public class Purchase {
 	private Long id;
 
 	@ManyToOne
+	@NotNull(message="{field.required}")
 	private Client client;
 
 	@ManyToMany
+	@NotNull(message="{field.required}")
 	private List<Product> products;
 
+	@NotNull(message="{field.required}")
 	private Double price;
+
+	@NotNull(message="{field.required}")
 	private Date purchaseDate;
 
 	public Purchase() {}
