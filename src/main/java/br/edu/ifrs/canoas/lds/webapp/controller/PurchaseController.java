@@ -108,8 +108,6 @@ public class PurchaseController {
 
 		ModelAndView mav = new ModelAndView("redirect:/purchase/list");
 		mav.addObject("purchase", purchaseService.save(purchase));
-		mav.addObject("clients", purchaseService.listClients());
-		mav.addObject("products", purchaseService.listProducts());
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 
 		return mav;
