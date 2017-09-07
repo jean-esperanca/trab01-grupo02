@@ -1,7 +1,6 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
 import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
-import br.edu.ifrs.canoas.lds.webapp.domain.PurchaseStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -87,11 +82,11 @@ public class PurchaseController {
 		mav.addObject("clients", purchaseService.listClients());
 		mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
 		mav.addObject("products", purchaseService.listProducts());
-		if(!purchaseService.getId(id).getPurchaseStatus().getDescription().toString().equals("EM ABERTO")){
-			mav.addObject("readOnly", false); //false = editable fields
+		if(!purchaseService.getId(id).getPurchaseStatus().getDescription().equals("EM ABERTO")){
+			mav.addObject("readOnly", false);
 			mav.addObject("isEdit", true);
 		}else {
-			mav.addObject("readOnly", true); //false = editable fields
+			mav.addObject("readOnly", true);
 			mav.addObject("isEdit", false);
 		}
 		return mav;
@@ -108,7 +103,7 @@ public class PurchaseController {
 
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Purchase purchase, BindingResult bindingResult,
-                             RedirectAttributes redirectAttr, Locale locale){
+                             RedirectAttributes redirectAttr){
 
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("/purchase/list");

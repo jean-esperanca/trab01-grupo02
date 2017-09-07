@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
 import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
+import br.edu.ifrs.canoas.lds.webapp.domain.PurchaseStatus;
 import br.edu.ifrs.canoas.lds.webapp.repository.PurchaseRepository;
 import br.edu.ifrs.canoas.lds.webapp.repository.PurchaseStatusRepository;
 import org.springframework.stereotype.Service;
@@ -17,24 +18,25 @@ public class PurchaseStatusService {
         this.purchaseRepository = purchaseRepository;
     }
 
-    public Purchase save(Purchase purchase) {
-        return purchaseRepository.save(purchase);
+    public PurchaseStatus save(PurchaseStatus purchaseStatus) {
+        return purchaseStatusRepository.save(purchaseStatus);
     }
 
-    public Purchase getOne(Purchase purchase) {
-        return purchaseRepository.findById(purchase.getId()).get();
+    public PurchaseStatus getOne(PurchaseStatus purchaseStatus) {
+        return purchaseStatusRepository.findById(purchaseStatus.getId()).get();
     }
 
     public void delete(Long id) {
-        purchaseRepository.deleteById(id);
+        purchaseStatusRepository.deleteById(id);
     }
 
-    public Purchase getId(Long id) {
-        return purchaseRepository.getOne(id);
+    public PurchaseStatus getId(Long id) {
+        return purchaseStatusRepository.getOne(id);
     }
 
-    public List<Purchase> list() {
-        return purchaseRepository.findAll();
+    public List<PurchaseStatus> list() {
+        return purchaseStatusRepository.findAll();
     }
 
+    public List<Purchase> listPurchases() {return purchaseRepository.findAll(); }
 }
