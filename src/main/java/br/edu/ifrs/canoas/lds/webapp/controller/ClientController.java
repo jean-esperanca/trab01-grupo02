@@ -91,11 +91,19 @@ public class ClientController {
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
 		ModelAndView mav = new ModelAndView("redirect:/client/list");
 		
-		if(clientService.delete(id)==false){
-			redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+		//Persistence
+		if(clientService.isPersistence(id)==true){
+			redirectAttr.addFlashAttribute("message", messages.get("persistence"));
 		}else{
-			redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+			
+			if(clientService.delete(id)==false){
+				redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			}else{
+				redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+			}
 		}
+		
+		
 		
 		return mav;
 	}
