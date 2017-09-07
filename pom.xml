@@ -176,6 +176,11 @@
             <artifactId>x-editable-bootstrap</artifactId>
             <version>1.5.1-1</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+        </dependency>
 
 
     </dependencies>

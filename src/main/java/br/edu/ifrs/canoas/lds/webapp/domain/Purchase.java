@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.lds.webapp.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.sql.Date;
 import java.util.List;
 
@@ -32,8 +33,23 @@ public class Purchase {
 	@NotNull(message="{field.required}")
 	private Date purchaseDate;
 
-	public Purchase() {}
+	@Null
+	private Date completionDate;
 
+	public enum status {
+		EM_ANDAMENTO(1),CONCLUIDO(2),CANCELADO(3);
+
+		private final int key;
+
+		status(int status){
+			key = status;
+		}
+		public int getKey(){
+			return key;
+		}
+	}
+
+	public Purchase() {}
 
 	public Purchase(Client purchase, List<Product> products, double price, Date date) {
 		this.client = purchase;
@@ -72,5 +88,13 @@ public class Purchase {
 
 	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
+	}
+
+	public Date getCompletionDate() {
+		return completionDate;
+	}
+
+	public void setCompletionDate(Date completionDate) {
+		this.completionDate = completionDate;
 	}
 }
