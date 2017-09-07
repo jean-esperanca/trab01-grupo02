@@ -61,7 +61,7 @@
                                        id="inputDate"
                                        placeholder="Date" th:disabled="${isView}"
                                        th:field="${purchase.purchaseDate}"
-                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="dd/mm/yyyy">
                             </div>
                             <br>
                             <div class="input-group">
@@ -79,7 +79,7 @@
                             <br>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-package"></i>
+                                    <i class="fa fa-barcode"></i>
                                     <span th:text="#{purchase.products}"></span>
                                 </div>
                                 <select th:field="*{products}" type="text"
@@ -89,6 +89,31 @@
                                             th:value="${product.id}" th:text="${product.name}"></option>
                                 </select>
 
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-flag"></i>
+                                    <span th:text="#{purchase.status}"></span>
+                                </div>
+                                <select th:field="*{purchaseStatus}" type="text"
+                                        class="form-control" id="inputStatus" placeholder="Client"
+                                        th:disabled="${isCreate}">
+                                    <option th:each="ps : ${allPurchaseStatus}"
+                                            th:value="${ps.id}" th:text="${ps.description}"></option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    <span th:text="#{purchase.completionDate}"></span>
+                                </div>
+                                <input type="date" class="form-control"
+                                       id="inputCompletionDate"
+                                       placeholder="Date"
+                                       th:field="${purchase.completionDate}"
+                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="dd/mm/yyyy" readonly>
                             </div>
                         </div>
                         <!-- /.box-body -->

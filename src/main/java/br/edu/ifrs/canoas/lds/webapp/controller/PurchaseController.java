@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.controller;
 
 import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
+import br.edu.ifrs.canoas.lds.webapp.domain.PurchaseStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -49,6 +52,7 @@ public class PurchaseController {
 		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("clients", purchaseService.listClients());
 		mav.addObject("products", purchaseService.listProducts());
+		mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
 		mav.addObject("readOnly", true); //true = No editable fields
 		mav.addObject("isView", true);
 		return mav;
@@ -57,9 +61,6 @@ public class PurchaseController {
 	@GetMapping("/create")
 	public ModelAndView create(){
 
-		//DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		//Date today = Calendar.getInstance().getTime();
-		//String date = df.format(today);
 		Date date = new Date(new java.util.Date().getTime());
 
 		Purchase purchase = new Purchase();
@@ -70,6 +71,7 @@ public class PurchaseController {
 		mav.addObject("purchase", purchase);
 		mav.addObject("clients", purchaseService.listClients());
 		mav.addObject("products", purchaseService.listProducts());
+		mav.addObject("allPurchaseStatus", purchaseService.getInitialPurchaseStatus());
 
 		mav.addObject("readOnly", false); //false = editable fields
 		mav.addObject("isCreate", true);
@@ -83,6 +85,7 @@ public class PurchaseController {
 
 		mav.addObject("purchase", purchaseService.getId(id));
 		mav.addObject("clients", purchaseService.listClients());
+		mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
 		mav.addObject("products", purchaseService.listProducts());
 		if(!purchaseService.getId(id).getPurchaseStatus().getDescription().toString().equals("EM ABERTO")){
 			mav.addObject("readOnly", false); //false = editable fields
