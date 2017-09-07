@@ -36,16 +36,19 @@ public class Purchase {
 	@Null
 	private Date completionDate;
 
-	private Status status;
+	@ManyToOne
+	@NotNull(message="{field.required}")
+	private PurchaseStatus purchaseStatus;
 
 	public Purchase() {}
 
-	public Purchase(Client purchase, List<Product> products, double price, Date date, Date completionDate) {
+	public Purchase(Client purchase, List<Product> products, double price, Date date, Date completionDate, PurchaseStatus purchaseStatus) {
 		this.client = purchase;
 		this.products = products;
 		this.price = price;
 		this.purchaseDate = date;
 		this.completionDate = completionDate;
+		this.purchaseStatus = purchaseStatus;
 
 	}
 
@@ -87,5 +90,13 @@ public class Purchase {
 
 	public void setCompletionDate(Date completionDate) {
 		this.completionDate = completionDate;
+	}
+
+	public PurchaseStatus getPurchaseStatus() {
+		return purchaseStatus;
+	}
+
+	public void setPurchaseStatus(PurchaseStatus purchaseStatus) {
+		this.purchaseStatus = purchaseStatus;
 	}
 }

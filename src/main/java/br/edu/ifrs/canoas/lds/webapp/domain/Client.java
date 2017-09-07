@@ -57,8 +57,8 @@ public class Client {
 	private String zipcode;
 	@ManyToOne
 	private Adress adress;
-	
-	@OneToMany
+
+	@OneToMany(mappedBy = "client")
 	private List<Purchase> purchases;
 
 	public Client(){}
