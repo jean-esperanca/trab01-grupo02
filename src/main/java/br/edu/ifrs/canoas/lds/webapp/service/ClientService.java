@@ -2,8 +2,11 @@ package br.edu.ifrs.canoas.lds.webapp.service;
 
 import org.springframework.stereotype.Service;
 
+import antlr.collections.List;
 import br.edu.ifrs.canoas.lds.webapp.domain.Client;
+import br.edu.ifrs.canoas.lds.webapp.domain.Purchase;
 import br.edu.ifrs.canoas.lds.webapp.repository.ClientRepository;
+import br.edu.ifrs.canoas.lds.webapp.repository.PurchaseRepository;
 
 /*
  *  Create by Edward Ramos Aug/10/2017
@@ -13,9 +16,11 @@ import br.edu.ifrs.canoas.lds.webapp.repository.ClientRepository;
 public class ClientService {
 
 	private final ClientRepository clientRepository;
+	private final PurchaseRepository purchaseRepository;
 
-	public ClientService(ClientRepository clientRepository) {
+	public ClientService(ClientRepository clientRepository, PurchaseRepository purchaseRepository) {
 		this.clientRepository = clientRepository;
+		this.purchaseRepository = purchaseRepository;
 	}
 
 	public Client save(Client client){
@@ -30,6 +35,7 @@ public class ClientService {
 	//TODO RNG004 - ID Não Encontrado
 	public boolean delete(Long id){
 		try {
+			
 			clientRepository.deleteById(id);
 			return true;
 		} catch (Exception e) {
@@ -48,5 +54,14 @@ public class ClientService {
 	
 	public boolean isExist(Long id){
 		return clientRepository.existsById(id);
+	}
+	
+	public boolean isPersistence(Long id){
+		List purchases = (List) purchaseRepository.findAll();
+		
+		//Fazer o Foreach
+		//Fazer o if(id == purchases.client.id)  return true;
+		
+		return false;
 	}
 }
