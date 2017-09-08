@@ -1,5 +1,7 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
 import antlr.collections.List;
@@ -57,10 +59,14 @@ public class ClientService {
 	}
 	
 	public boolean isPersistence(Long id){
-		List purchases = (List) purchaseRepository.findAll();
+		    //Tem que acertar esse List, pois nao ta funcionando...
+		//List purchases = (List) purchaseRepository.findAll();
 		
-		//Fazer o Foreach
-		//Fazer o if(id == purchases.client.id)  return true;
+		//for(Purchase purchase : purchases){
+		//	if(id == purchase.getId()){
+		//		return true;
+		//	} 
+		//}
 		
 		return false;
 	}
