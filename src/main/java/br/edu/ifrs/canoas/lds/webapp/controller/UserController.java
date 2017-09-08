@@ -71,7 +71,7 @@ public class UserController {
 		mav.addObject("myuser", userService.getId(id));
 		mav.addObject("roles", userService.getRoles());
 		mav.addObject("isEdit", true); // false = editable fields
-		mav.addObject("isEditable", true);
+		mav.addObject("isVisible", false); // visible false= can't see		
 		return mav;
 	}
 
@@ -89,6 +89,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("/user/form");
 
 		mav.addObject("myuser", userService.getId(id));
+		mav.addObject("roles", userService.getRoles());   
 		mav.addObject("isView", true); // true = No editable fields
 		mav.addObject("editable", false);
 		return mav;
@@ -99,8 +100,8 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("/user/form");
 		mav.addObject("myuser", new User());
 		mav.addObject("roles", userService.getRoles());        
-		mav.addObject("isCreate", true);
-		mav.addObject("editable", true); // false = can edit
+		mav.addObject("isCreate", true);		
+		mav.addObject("isVisible", true); // visible true= can see
 		return mav;
 	}
 
