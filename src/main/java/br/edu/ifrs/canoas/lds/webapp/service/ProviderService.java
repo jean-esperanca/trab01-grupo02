@@ -1,9 +1,14 @@
 package br.edu.ifrs.canoas.lds.webapp.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.domain.Provider;
+import br.edu.ifrs.canoas.lds.webapp.repository.ProductRepository;
 import br.edu.ifrs.canoas.lds.webapp.repository.ProviderRepository;
+import br.edu.ifrs.canoas.lds.webapp.repository.PurchaseRepository;
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -14,9 +19,11 @@ import br.edu.ifrs.canoas.lds.webapp.repository.ProviderRepository;
 public class ProviderService {
 
 	private final ProviderRepository providerRepository;
+	private final ProductRepository productRepository;
 
-	public ProviderService(ProviderRepository providerRepository) {
+	public ProviderService(ProviderRepository providerRepository, ProductRepository productRepository) {
 		this.providerRepository = providerRepository;
+		this.productRepository = productRepository;
 	}
 
 	public Iterable<Provider> list() {
@@ -48,7 +55,18 @@ public class ProviderService {
 	}
 
 	public boolean isExist(Long id) {
-		// TODO Auto-generated method stub
 		return providerRepository.existsById(id);
+	}
+
+	public boolean isPersistence(Long id) {
+		ArrayList<Product> products = new ArrayList<>();
+		products = (ArrayList<Product>) productRepository.findAll();
+		
+		for(Product product : products) {
+			if (id == product.getProvider().getId()) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
