@@ -27,9 +27,9 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 	
-	@NotEmpty
+
 	private String name;
-	@Email @NotEmpty
+
 	private String email;
 	
     @OneToOne @JsonIgnore
