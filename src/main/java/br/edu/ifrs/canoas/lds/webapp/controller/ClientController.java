@@ -93,7 +93,7 @@ public class ClientController {
 		
 		//Persistence
 		if(clientService.isPersistence(id)==true){
-			redirectAttr.addFlashAttribute("message", messages.get("persistence"));
+			redirectAttr.addFlashAttribute("message", messages.get("client.persistence"));
 		}else{
 			
 			if(clientService.delete(id)==false){
