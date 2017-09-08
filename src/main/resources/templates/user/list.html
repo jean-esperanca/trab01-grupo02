@@ -41,7 +41,6 @@
 								<tr role="row">
 									<th th:text="#{user.id}" />
 									<th th:text="#{user.title}" />
-									<th th:text="#{user.purchaseStatus}" />
 									<th th:text="#{user.name}" />
 									<th th:text="#{user.email}" />
 									<th th:text="#{user.role}" />
@@ -55,8 +54,6 @@
 											th:text="${myUser.id}" /> </a></td>
 									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
 										th:text="${myUser.username}" /></td>
-									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
-										th:text="${myUser.purchaseStatus}" /></td>
 									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
 										th:text="${myUser.name}" /></td>
 									<td><a href="#" th:href="@{|/user/view/${myUser.id}|}"
