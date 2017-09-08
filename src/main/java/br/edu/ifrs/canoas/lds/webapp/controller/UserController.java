@@ -71,7 +71,7 @@ public class UserController {
 		mav.addObject("myuser", userService.getId(id));
 		mav.addObject("roles", userService.getRoles());
 		mav.addObject("isEdit", true); // false = editable fields
-		mav.addObject("isEditable", false);
+		mav.addObject("isEditable", true);
 		return mav;
 	}
 
@@ -100,7 +100,7 @@ public class UserController {
 		mav.addObject("myuser", new User());
 		mav.addObject("roles", userService.getRoles());        
 		mav.addObject("isCreate", true);
-		mav.addObject("editable", true);
+		mav.addObject("editable", true); // false = can edit
 		return mav;
 	}
 

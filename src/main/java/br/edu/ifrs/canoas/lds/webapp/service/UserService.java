@@ -21,12 +21,7 @@ public class UserService {
 	}
 	
 	public User save(User user) {
-		User fetchedUser = this.getOne(user);
-		fetchedUser.setName(user.getName());
-		fetchedUser.setEmail(user.getEmail());
-		fetchedUser.setSkill(user.getSkill());
-		fetchedUser.setExperience(user.getExperience());
-		return userRepository.save(fetchedUser);
+		return userRepository.save(user);
 	}
 
 	public User getOne(User user) {
