@@ -1,7 +1,9 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -28,10 +30,10 @@ public class Product {
 	@ManyToOne
 	private Category category;
 	
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
+	@NotNull(message="{field.required}") @Min(1) 
 	private Double value;
 	
-	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
+	@NotNull(message="{field.required}") @Min(1) 
 	private Integer quantity;
 	@ManyToOne
 	private Provider provider;

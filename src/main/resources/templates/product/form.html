@@ -134,15 +134,14 @@
 									th:text="#{product.provider}" /></label>
 
 								<div class="col-sm-10"
-									th:classappend="${#fields.hasErrors('provider')}? 'has-error'">
+									>
 									<select th:field="*{provider}" type="text" class="form-control"
 										id="inputCategory" placeholder="Provider"
 										th:readonly="${isView}">
 										<option th:each="provider: ${providers}"
 											th:value="${provider.id}" th:text="${provider.name}"></option>
 
-									</select> <span th:if="${#fields.hasErrors('provider')}"
-										th:errors="*{provider}" th:class="help-block" />
+									</select> 
 								</div>
 							</div>
 

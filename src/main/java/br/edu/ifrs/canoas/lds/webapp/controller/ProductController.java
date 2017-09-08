@@ -88,9 +88,13 @@ public class ProductController {
             RedirectAttributes redirectAttr, Locale locale){
 		
 		if (bindingResult.hasErrors()) {
-            return new ModelAndView("/product/form");
+            ModelAndView mav = new ModelAndView("/product/form");
+			mav.addObject("categories", productService.findAllCategories());
+	        mav.addObject("providers", productService.findAllProviders());	
+	        mav.addObject("isCreate", true);
+	        return mav;
         }
-		
+
 		ModelAndView mav = new ModelAndView("redirect:/product/list");
 		mav.addObject("product", productService.save(product));
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
