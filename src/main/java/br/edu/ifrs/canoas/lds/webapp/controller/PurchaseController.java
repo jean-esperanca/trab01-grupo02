@@ -113,10 +113,10 @@ public class PurchaseController {
 
         if (bindingResult.hasErrors()) {
             ModelAndView mav = new ModelAndView("redirect:/purchase/list");
+            System.out.println("HAS ERROR >.<");
             System.out.println(purchase.getCompletionDate());
             System.out.println(bindingResult.getAllErrors());
             System.out.println(purchase.toString());
-            System.out.println("HAS ERROR >.<");
             return mav;
         }else{
             System.out.println("NO HAS ERROR, YAHOOO!!!");

@@ -111,13 +111,13 @@ public class Purchase {
 
     public String toString() {
         return
-                " [id = " + this.id.toString()
+                " [id = " + this.id
                         + ", client = " + this.client.getName()
                         + ", products = " + this.products.size()
                         + ", price = " + this.price
                         + ", purchaseDate = " + this.purchaseDate
                         + ", completionDate = " + this.completionDate
-                        + ", purchaseStatus = " + this.purchaseStatus.getDescription()
+                        + ", purchaseStatus = " + this.purchaseStatus
                         + "];";
     }
 }
