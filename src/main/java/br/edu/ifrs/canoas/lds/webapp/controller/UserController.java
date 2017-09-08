@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.lds.webapp.controller;
 
 import br.edu.ifrs.canoas.lds.webapp.config.Messages;
 import br.edu.ifrs.canoas.lds.webapp.config.auth.UserImpl;
+import br.edu.ifrs.canoas.lds.webapp.domain.Product;
 import br.edu.ifrs.canoas.lds.webapp.domain.User;
 import br.edu.ifrs.canoas.lds.webapp.service.UserService;
 
@@ -38,7 +39,7 @@ public class UserController {
 		return mav;
 	}
 
-	@PostMapping("save")
+	@PostMapping("/save")
 	public ModelAndView save(User user, BindingResult bindingResult, RedirectAttributes redirectAttr,
 			Locale locale) {
 
@@ -46,8 +47,9 @@ public class UserController {
 			return new ModelAndView("/user/form");
 		}
 
-		ModelAndView mav = new ModelAndView("redirect:/user/form");
+		ModelAndView mav = new ModelAndView("redirect:/user/list");
 		mav.addObject("myuser", userService.save(user));
+		mav.addObject("roles", userService.getRoles());	
 		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
 
 		return mav;
@@ -69,6 +71,7 @@ public class UserController {
 		mav.addObject("myuser", userService.getId(id));
 		mav.addObject("roles", userService.getRoles());
 		mav.addObject("isEdit", true); // false = editable fields
+		mav.addObject("isEditable", false);
 		return mav;
 	}
 
@@ -87,6 +90,17 @@ public class UserController {
 
 		mav.addObject("myuser", userService.getId(id));
 		mav.addObject("isView", true); // true = No editable fields
+		mav.addObject("editable", false);
+		return mav;
+	}
+	
+	@GetMapping("/create")
+	public ModelAndView create(){
+		ModelAndView mav = new ModelAndView("/user/form");
+		mav.addObject("myuser", new User());
+		mav.addObject("roles", userService.getRoles());        
+		mav.addObject("isCreate", true);
+		mav.addObject("editable", true);
 		return mav;
 	}
 

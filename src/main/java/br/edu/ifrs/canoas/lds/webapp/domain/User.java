@@ -21,6 +21,8 @@ public class User {
 	private String username;
 	private boolean active;
 	private String password;
+	private String experience;
+	private String skill;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 	
@@ -28,10 +30,6 @@ public class User {
 	private String name;
 	@Email @NotEmpty
 	private String email;
-	@NotEmpty
-	private String experience;
-	@NotEmpty
-	private String skill;
 	
     @OneToOne @JsonIgnore
     private File picture;
