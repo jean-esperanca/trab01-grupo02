@@ -1,6 +1,10 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.util.List;
 
 /**
@@ -13,12 +17,21 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String name;
+	
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private String description;
+	
+	
 	@ManyToOne
 	private Category category;
 	
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private Double value;
+	
+	@NotNull(message="{field.required}") @NotEmpty(message="{field.empty}")
 	private Integer quantity;
 	@ManyToOne
 	private Provider provider;

@@ -1,7 +1,7 @@
 <html layout:decorate="~{/layouts/main}">
 
 <head>
-<title th:text="#{product.create}" />
+<title th:text="#{product.title}" />
 </head>
 
 <!-- CONTENT HEADER -->
@@ -9,14 +9,14 @@
 	<section class="content-header">
 		<!-- PAGE TITLE -->
 		<h1>
-			<span th:text="#{product.create}" />
+			<span th:text="#{product.title}" />
 		</h1>
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb">
 			<li><a href="#"> <i class="fa fa-dashboard"></i> <span
 					th:text="#{breadcrumb}" />
 			</a></li>
-			<li><a href="#"><span th:text="#{product.create}" /></a></li>
+			<li><a href="#"><span th:text="#{product.title}" /></a></li>
 		</ol>
 	</section>
 </div>
@@ -43,20 +43,23 @@
 						th:action="@{/product/save}" th:object="${product}">
 
 
-							
+
 						<div class="box-body">
 
 
-						<input type="hidden" id="ProductId" th:field="*{id}" />
-		
+							<input type="hidden" id="ProductId" th:field="*{id}" />
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.name}" /></label>
 
-								<div class="col-sm-10">
+								<div class="col-sm-10"
+									th:classappend="${#fields.hasErrors('name')}? 'has-error'">
 									<input type="text" class="form-control" id="inputName"
 										placeholder="Name" th:readonly="${isView}"
-										th:field="${product.name}"/>
+										th:field="${product.name}" /><span
+										th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+										th:class="help-block" />
 								</div>
 							</div>
 
@@ -65,13 +68,15 @@
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.desc}" /></label>
 
-								<div class="col-sm-10">
+								<div class="col-sm-10"
+									th:classappend="${#fields.hasErrors('description')}? 'has-error'">
 									<input type="text" class="form-control" id="inputDesc"
 										placeholder="Description" th:readonly="${isView}"
-										th:field="${product.description}"/>
+										th:field="${product.description}" /> <span
+										th:if="${#fields.hasErrors('description')}"
+										th:errors="*{description}" th:class="help-block" />
 								</div>
 							</div>
-
 
 
 							<div class="form-group">
@@ -79,8 +84,8 @@
 									th:text="#{product.category}" /></label>
 
 								<div class="col-sm-10">
-									<select th:field="*{category}"  type="text"
-										class="form-control" id="inputCategory" placeholder="Category"
+									<select th:field="*{category}" type="text" class="form-control"
+										id="inputCategory" placeholder="Category"
 										th:readonly="${isView}">
 										<option th:each="category: ${categories}"
 											th:value="${category.id}" th:text="${category.name}"></option>
@@ -90,17 +95,22 @@
 							</div>
 
 
-
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.value}" /></label>
 
-								<div class="col-sm-10">
+								<div class="col-sm-10"
+									th:classappend="${#fields.hasErrors('value')}? 'has-error'">
 									<input type="text" class="form-control" id="inputValue"
 										placeholder="Value" th:readonly="${isView}"
-										th:field="${product.value}">
+										th:field="${product.value}"> <span
+										th:if="${#fields.hasErrors('value')}" th:errors="*{value}"
+										th:class="help-block" />
 								</div>
 							</div>
+
+
+
 
 
 
@@ -108,46 +118,51 @@
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.quantity}" /></label>
 
-								<div class="col-sm-10">
+								<div class="col-sm-10"
+									th:classappend="${#fields.hasErrors('quantity')}? 'has-error'">
 									<input type="text" class="form-control" id="inputQuantity"
 										placeholder="Quantity" th:readonly="${isView}"
-										th:field="${product.quantity}">
+										th:field="${product.quantity}"><span
+										th:if="${#fields.hasErrors('quantity')}"
+										th:errors="*{quantity}" th:class="help-block" />
 								</div>
 							</div>
+
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label"><span
 									th:text="#{product.provider}" /></label>
 
-								<div class="col-sm-10">
-									<select th:field="*{provider}" type="text"
-										class="form-control" id="inputCategory" placeholder="Provider"
+								<div class="col-sm-10"
+									th:classappend="${#fields.hasErrors('provider')}? 'has-error'">
+									<select th:field="*{provider}" type="text" class="form-control"
+										id="inputCategory" placeholder="Provider"
 										th:readonly="${isView}">
 										<option th:each="provider: ${providers}"
 											th:value="${provider.id}" th:text="${provider.name}"></option>
-									</select>
 
+									</select> <span th:if="${#fields.hasErrors('provider')}"
+										th:errors="*{provider}" th:class="help-block" />
 								</div>
 							</div>
-
-
-
 
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">
-							<a th:href="@{/product/list}" class="btn btn-default">
-								<span th:text="#{product.cancel}" />
+							<a th:href="@{/product/list}" class="btn btn-default"> <span
+								th:text="#{product.cancel}" />
 							</a>
-							<button th:if="${isCreate}" type="submit" class="btn btn-info pull-right">
+							<button th:if="${isCreate}" type="submit"
+								class="btn btn-info pull-right">
 								<span th:text="#{product.submit}" />
 							</button>
-								<button th:if="${isEdit}" type="submit" class="btn btn-info pull-right">
+							<button th:if="${isEdit}" type="submit"
+								class="btn btn-info pull-right">
 								<span th:text="#{product.edit}" />
 							</button>
-					
 
-							
+
+
 						</div>
 						<!-- /.box-footer -->
 					</form>
