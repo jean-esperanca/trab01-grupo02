@@ -59,14 +59,15 @@ public class ClientService {
 	}
 	
 	public boolean isPersistence(Long id){
-		    //Tem que acertar esse List, pois nao ta funcionando...
-		//List purchases = (List) purchaseRepository.findAll();
 		
-		//for(Purchase purchase : purchases){
-		//	if(id == purchase.getId()){
-		//		return true;
-		//	} 
-		//}
+		ArrayList<Purchase> purchases = new ArrayList<>();
+		purchases = (ArrayList<Purchase>) purchaseRepository.findAll();
+		
+		for(Purchase purchase : purchases){
+			if(id == purchase.getClient().getId()){
+				return true;
+			} 
+		}
 		
 		return false;
 	}
