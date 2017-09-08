@@ -63,9 +63,10 @@ public class ProductController {
 	}
 	
 	@GetMapping("/view/{id}")
-	public ModelAndView view(@PathVariable Long id){
+	public ModelAndView view(@PathVariable("id") Long id){
 		ModelAndView mav = new ModelAndView("/product/form");
-		
+		mav.addObject("categories", productService.findAllCategories());
+		mav.addObject("providers", productService.findAllProviders());
 		mav.addObject("product", productService.getId(id));
 
 		mav.addObject("isView", true); //true = No editable fields

@@ -80,13 +80,27 @@
 										</thead>
 										<tbody>
 											<tr role="row" class="odd" th:each="product : ${products}">
-												<td th:text="${product.id}"></td>
-												<td th:text="${product.name}"></td>
-												<td th:text="${product.description}"></td>
-												<td th:text="${product.category.name}"></td>
-												<td th:text="${product.value}"></td>
-												<td th:text="${product.quantity}"></td>
-												<td th:text="${product.provider.name}"></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.id}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.name}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.description}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.category.name}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.value}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.quantity}|" /></td>
+												<td><a href="#"
+													th:href="@{|/product/view/${product.id}|}"
+													th:text="|${product.provider.name}|" /></td>
 
 												<td><a th:href="@{/product/edit/}+${product.id}"> <span
 														class="badge" th:text="#{edit}" />
