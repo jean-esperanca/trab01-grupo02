@@ -82,7 +82,7 @@ public class ProviderController {
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr) {
 		ModelAndView mav = new ModelAndView("redirect:/provider/list");
 		if (providerService.isPersistence(id) == true) {
-			redirectAttr.addFlashAttribute("message", messages.get("persistence"));
+			redirectAttr.addFlashAttribute("message", messages.get("provider.persistence"));
 		} else {
 			if (providerService.delete(id) == false) {
 				redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
