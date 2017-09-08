@@ -56,11 +56,23 @@ public class ProductController {
 	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
 		ModelAndView mav = new ModelAndView("redirect:/product/list");
-		productService.delete(id);
 		
-		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+		if(productService.isPersistence(id)==true) {
+			redirectAttr.addFlashAttribute("message", messages.get("product.persistence"));
+		}else {
+			if(productService.delete(id)==false) {
+				redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+			}else {
+				redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
+			}
+		}
+
+		
 		return mav;
 	}
+	
+	
+	
 	
 	@GetMapping("/view/{id}")
 	public ModelAndView view(@PathVariable("id") Long id){
