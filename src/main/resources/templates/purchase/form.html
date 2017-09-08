@@ -86,7 +86,8 @@
                                         class="form-control" id="inputProducts" placeholder="Product"
                                         th:disabled="${isView}" multiple>
                                     <option th:each="product: ${products}"
-                                            th:value="${product.id}" th:text="${product.name}"></option>
+                                            th:value="${product.id}" th:text="${product.name + ' - R$' + product.value}">
+                                    </option>
                                 </select>
 
                             </div>
@@ -113,19 +114,19 @@
                                        id="inputCompletionDate"
                                        placeholder="Date"
                                        th:field="${purchase.completionDate}"
-                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="dd/mm/yyyy" readonly>
+                                       data-mask="dd/mm/yyyy" readonly>
                             </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-default">
-                                <span th:text="#{purchase.cancel}"/>
+                            <button onclick="location.href = document.location.origin+'/purchase/list';" type="button" class="btn btn-default">
+                                <span th:text="#{purchase.back}"/>
                             </button>
                             <button th:if="${isCreate}" type="submit" class="btn btn-info pull-right">
                                 <span th:text="#{purchase.submit}"/>
                             </button>
                             <button th:if="${isEdit}" type="submit" class="btn btn-info pull-right">
-                                <span th:text="#{purchase.edit}"/>
+                                <span th:text="#{purchase.finalize}"/>
                             </button>
                         </div>
                         <!-- /.box-footer -->

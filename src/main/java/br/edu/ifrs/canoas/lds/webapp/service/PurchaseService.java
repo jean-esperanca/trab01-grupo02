@@ -73,4 +73,7 @@ public class PurchaseService {
         return initialStatus;
     }
 
+    public boolean isExist(Long id) {
+        return purchaseRepository.existsById(id);
+    }
 }

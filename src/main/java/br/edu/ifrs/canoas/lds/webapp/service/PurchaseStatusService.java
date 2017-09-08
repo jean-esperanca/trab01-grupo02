@@ -21,7 +21,7 @@ public class PurchaseStatusService {
     public PurchaseStatus save(PurchaseStatus purchaseStatus) {
         return purchaseStatusRepository.save(purchaseStatus);
     }
-
+    
     public PurchaseStatus getOne(PurchaseStatus purchaseStatus) {
         return purchaseStatusRepository.findById(purchaseStatus.getId()).get();
     }

@@ -24,96 +24,108 @@ import java.sql.Date;
 @RequestMapping("/purchase/")
 public class PurchaseController {
 
-	private final Messages messages;
-	private final PurchaseService purchaseService;
+    private final Messages messages;
+    private final PurchaseService purchaseService;
 
-	public PurchaseController(Messages messages, PurchaseService purchaseService) {
-		this.messages = messages;
-		this.purchaseService = purchaseService;
-	}
+    public PurchaseController(Messages messages, PurchaseService purchaseService) {
+        this.messages = messages;
+        this.purchaseService = purchaseService;
+    }
 
-	@GetMapping("/list")
-	public ModelAndView list(){
-		ModelAndView mav = new ModelAndView("/purchase/list");
-		mav.addObject("purchases", purchaseService.list());
+    @GetMapping("/list")
+    public ModelAndView list() {
+        ModelAndView mav = new ModelAndView("/purchase/list");
+        mav.addObject("purchases", purchaseService.list());
 
-		return mav;
-	}
+        return mav;
+    }
 
-	@GetMapping("/view/{id}")
-	public ModelAndView view(@PathVariable Long id){
-		ModelAndView mav = new ModelAndView("/purchase/form");
+    @GetMapping("/view/{id}")
+    public ModelAndView view(@PathVariable Long id, RedirectAttributes redirectAttr) {
 
-		mav.addObject("purchase", purchaseService.getId(id));
-		mav.addObject("clients", purchaseService.listClients());
-		mav.addObject("products", purchaseService.listProducts());
-		mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
-		mav.addObject("readOnly", true); //true = No editable fields
-		mav.addObject("isView", true);
-		return mav;
-	}
+        if (purchaseService.isExist(id) == true) {
+            ModelAndView mav = new ModelAndView("/purchase/form");
 
-	@GetMapping("/create")
-	public ModelAndView create(){
+            mav.addObject("purchase", purchaseService.getId(id));
+            mav.addObject("clients", purchaseService.listClients());
+            mav.addObject("products", purchaseService.listProducts());
+            mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
+            mav.addObject("readOnly", true); //true = No editable fields
+            mav.addObject("isView", true);
+            return mav;
 
-		Date date = new Date(new java.util.Date().getTime());
+        } else {
+            ModelAndView mav2 = new ModelAndView("redirect:/purchase/list");
+            redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+            return mav2;
+        }
+    }
 
-		Purchase purchase = new Purchase();
-		purchase.setPurchaseDate(date);
+    @GetMapping("/create")
+    public ModelAndView create() {
 
-		ModelAndView mav = new ModelAndView("/purchase/form");
+        Purchase purchase = new Purchase();
+        purchase.setPurchaseDate(new Date(new java.util.Date().getTime()));
 
-		mav.addObject("purchase", purchase);
-		mav.addObject("clients", purchaseService.listClients());
-		mav.addObject("products", purchaseService.listProducts());
-		mav.addObject("allPurchaseStatus", purchaseService.getInitialPurchaseStatus());
+        ModelAndView mav = new ModelAndView("/purchase/form");
 
-		mav.addObject("readOnly", false); //false = editable fields
-		mav.addObject("isCreate", true);
-		mav.addObject("nowDate", date);
-		return mav;
-	}
+        mav.addObject("purchase", purchase);
+        mav.addObject("clients", purchaseService.listClients());
+        mav.addObject("products", purchaseService.listProducts());
+        mav.addObject("allPurchaseStatus", purchaseService.getInitialPurchaseStatus());
 
-	@GetMapping("/edit/{id}")
-	public ModelAndView edit(@PathVariable("id") Long id){
-		ModelAndView mav = new ModelAndView("/purchase/form");
+        mav.addObject("readOnly", false); //false = editable fields
+        mav.addObject("isCreate", true);
+        return mav;
+    }
 
-		mav.addObject("purchase", purchaseService.getId(id));
-		mav.addObject("clients", purchaseService.listClients());
-		mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
-		mav.addObject("products", purchaseService.listProducts());
-		if(!purchaseService.getId(id).getPurchaseStatus().getDescription().equals("EM ABERTO")){
-			mav.addObject("readOnly", false);
-			mav.addObject("isEdit", true);
-		}else {
-			mav.addObject("readOnly", true);
-			mav.addObject("isEdit", false);
-		}
-		return mav;
-	}
+    @GetMapping("/edit/{id}")
+    public ModelAndView edit(@PathVariable("id") Long id , RedirectAttributes redirectAttr) {
+        if (purchaseService.isExist(id) == true) {
+            ModelAndView mav = new ModelAndView("/purchase/form");
 
-	@GetMapping("/delete/{id}")
-	public ModelAndView delete(@PathVariable("id") Long id, RedirectAttributes redirectAttr){
-		ModelAndView mav = new ModelAndView("/purchase/list");
-		purchaseService.delete(id);
+            mav.addObject("purchase", purchaseService.getId(id));
+            mav.addObject("clients", purchaseService.listClients());
+            mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
+            mav.addObject("products", purchaseService.listProducts());
 
-		redirectAttr.addFlashAttribute("message", messages.get("field.deleted"));
-		return mav;
-	}
+            if (purchaseService.getId(id).getPurchaseStatus().getId() == 1) {
+                mav.addObject("readOnly", false);
+                mav.addObject("isEdit", true);
+            } else {
+                mav.addObject("readOnly", true);
+                mav.addObject("isEdit", false);
+            }
+            return mav;
 
-	@PostMapping("/save")
-	public ModelAndView save(@Valid Purchase purchase, BindingResult bindingResult,
-                             RedirectAttributes redirectAttr){
+        } else {
+            ModelAndView mav2 = new ModelAndView("redirect:/purchase/list");
+            redirectAttr.addFlashAttribute("message", messages.get("idNotFound"));
+            return mav2;
+        }
+    }
 
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("/purchase/list");
-		}
+    @PostMapping("/save")
+    public ModelAndView save(@Valid Purchase purchase, BindingResult bindingResult,
+                             RedirectAttributes redirectAttr) {
 
-		ModelAndView mav = new ModelAndView("redirect:/purchase/list");
-		mav.addObject("purchase", purchaseService.save(purchase));
-		redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
+        purchase.setCompletionDate(new Date(new java.util.Date().getTime()));
 
-		return mav;
-	}
-	
+        if (bindingResult.hasErrors()) {
+            ModelAndView mav = new ModelAndView("redirect:/purchase/list");
+            System.out.println(purchase.getCompletionDate());
+            System.out.println(bindingResult.getAllErrors());
+            System.out.println(purchase.toString());
+            System.out.println("HAS ERROR >.<");
+            return mav;
+        }else{
+            System.out.println("NO HAS ERROR, YAHOOO!!!");
+        }
+
+        ModelAndView mav = new ModelAndView("redirect:/purchase/list");
+        mav.addObject("purchase", purchaseService.save(purchase));
+        redirectAttr.addFlashAttribute("message", messages.get("field.saved"));
+
+        return mav;
+    }
 }
