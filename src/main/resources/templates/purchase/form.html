@@ -57,11 +57,9 @@
                                     <i class="fa fa-calendar"></i>
                                     <span th:text="#{purchase.date}"></span>
                                 </div>
-                                <input type="date" class="form-control"
-                                       id="inputDate"
-                                       placeholder="Date" th:disabled="${isView}"
-                                       th:field="${purchase.purchaseDate}"
-                                       data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="dd/mm/yyyy">
+                                <input type="text" name="date" class="form-control" id="inputDate" th:disabled="${!isCreate}"
+                                th:value="${purchase.purchaseDate}?${#dates.format(purchase.purchaseDate, 'dd/MM/yyyy')}:''"
+                                placeholder="dd/mm/yyyy" />
                             </div>
                             <br>
                             <div class="input-group">
@@ -110,11 +108,7 @@
                                     <i class="fa fa-calendar"></i>
                                     <span th:text="#{purchase.completionDate}"></span>
                                 </div>
-                                <input type="date" class="form-control"
-                                       id="inputCompletionDate"
-                                       placeholder="Date"
-                                       th:field="${purchase.completionDate}"
-                                       data-mask="dd/mm/yyyy" readonly>
+                                <input type="text" class="form-control" th:value="${purchase.completionDate}?${#dates.format(purchase.completionDate, 'dd/MM/yyyy')}:''" readonly/>
                             </div>
                         </div>
                         <!-- /.box-body -->

@@ -1,10 +1,9 @@
 package br.edu.ifrs.canoas.lds.webapp.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
+import org.springframework.lang.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +33,7 @@ public class Purchase {
     @NotNull(message = "{field.required}")
     private Date purchaseDate;
 
+    @Nullable
     private Date completionDate;
 
     @ManyToOne

@@ -95,10 +95,10 @@
                                        th:text="|${purchase.price}|"/></td>
                                 <td><a href="#"
                                        th:href="@{|/purchase/view/${purchase.id}|}"
-                                       th:text="|${purchase.purchaseDate}|"/></td>
+                                       th:text="|${#dates.format(purchase.purchaseDate, 'dd/MM/yyyy')}|"/></td>
                                 <td><a href="#"
                                        th:href="@{|/purchase/view/${purchase.id}|}"
-                                       th:text="|${purchase.completionDate}|"/></td>
+                                       th:text="|${#dates.format(purchase.completionDate, 'dd/MM/yyyy')}|"/></td>
                                 <td><a href="#"
                                        th:href="@{|/purchase/view/${purchase.id}|}"
                                        th:text="|${purchase.purchaseStatus.description}|"/></td>

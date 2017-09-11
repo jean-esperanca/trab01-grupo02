@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.sql.Date;
+import java.util.Date;
 
 /*
  *  Create by Edward Ramos Aug/11/2017
@@ -65,7 +65,9 @@ public class PurchaseController {
     public ModelAndView create() {
 
         Purchase purchase = new Purchase();
-        purchase.setPurchaseDate(new Date(new java.util.Date().getTime()));
+        //purchase.setPurchaseDate(new Date(new java.util.Date().getTime()));
+        purchase.setPurchaseDate(new Date());
+
 
         ModelAndView mav = new ModelAndView("/purchase/form");
 
@@ -89,6 +91,8 @@ public class PurchaseController {
             mav.addObject("allPurchaseStatus", purchaseService.listPurchaseStatus());
             mav.addObject("products", purchaseService.listProducts());
 
+            mav.addObject("isCreate", false);
+
             if (purchaseService.getId(id).getPurchaseStatus().getId() == 1) {
                 mav.addObject("readOnly", false);
                 mav.addObject("isEdit", true);
@@ -108,18 +112,15 @@ public class PurchaseController {
     @PostMapping("/save")
     public ModelAndView save(@Valid Purchase purchase, BindingResult bindingResult,
                              RedirectAttributes redirectAttr) {
-
-        purchase.setCompletionDate(new Date(new java.util.Date().getTime()));
+        if (purchase.getPurchaseStatus().getId() != 1) {
+            purchase.setCompletionDate(new Date(new java.util.Date().getTime()));
+        }
 
         if (bindingResult.hasErrors()) {
+            System.out.print(bindingResult.getErrorCount() + " ERROS: ");
+            System.out.print(bindingResult.getAllErrors());
             ModelAndView mav = new ModelAndView("redirect:/purchase/list");
-            System.out.println("HAS ERROR >.<");
-            System.out.println(purchase.getCompletionDate());
-            System.out.println(bindingResult.getAllErrors());
-            System.out.println(purchase.toString());
             return mav;
-        }else{
-            System.out.println("NO HAS ERROR, YAHOOO!!!");
         }
 
         ModelAndView mav = new ModelAndView("redirect:/purchase/list");
